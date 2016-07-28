@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12 search-input">
+    <ml-input qtext="payorSearchCtrl.qtext" search="payorSearchCtrl.search(qtext)" suggest="payorSearchCtrl.suggest(val)" template="fa"></ml-input>
+    <button class="btn btn-default" ng-click="payorSearchCtrl.reset()">reset</button>
+  </div>
+</div>
+<div class="row">
+
+  <ml-facets class="col-md-3" facets="payorSearchCtrl.response.facets" template="/views/researcher/facets.html" toggle="payorSearchCtrl.toggleFacet(facet, value)" show-more="payorSearchCtrl.showMoreFacets(facet, facetName)"></ml-facets>
+  <div class="col-md-9">
+    <h3 ng-if="payorSearchCtrl.response.total === 0">No results to show</h3>
+
+    <div ng-if="payorSearchCtrl.response.total > 0" class="results">
+
+      <pagination ng-model="payorSearchCtrl.page" ng-change="payorSearchCtrl.search()" max-size="10" boundary-links="true"
+                  total-items="payorSearchCtrl.response.total" items-per-page="payorSearchCtrl.response['page-length']"></pagination>
+
+      <ml-metrics search="payorSearchCtrl.response"></ml-metrics>
+      <ml-results template="/views/search-results/search-results.html" results="payorSearchCtrl.response.results"></ml-results>
+    </div>
+  </div>
+</div>

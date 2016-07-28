@@ -1,0 +1,300 @@
+<options xmlns="http://marklogic.com/appservices/search">
+  <search-option>unfiltered</search-option>
+  <page-length>10</page-length>
+  <additional-query>
+    <cts:collection-query xmlns:cts="http://marklogic.com/cts">
+      <cts:uri>patient</cts:uri>
+      <cts:uri>provider</cts:uri>
+      <cts:uri>claim</cts:uri>
+      <cts:uri>Medicare D</cts:uri>
+    </cts:collection-query>
+  </additional-query>
+  <term apply="term">
+    <empty apply="all-results"/>
+    <term-option>punctuation-insensitive</term-option>
+    <term-option>stemmed</term-option>
+  </term>
+  <grammar>
+    <quotation>"</quotation>
+    <implicit>
+      <cts:and-query strength="20" xmlns:cts="http://marklogic.com/cts"/>
+    </implicit>
+    <starter strength="30" apply="grouping" delimiter=")">(</starter>
+    <starter strength="40" apply="prefix" element="cts:not-query">-</starter>
+    <joiner strength="10" apply="infix" element="cts:or-query" tokenize="word">OR</joiner>
+    <joiner strength="20" apply="infix" element="cts:and-query" tokenize="word">AND</joiner>
+    <joiner strength="30" apply="infix" element="cts:near-query" tokenize="word">NEAR</joiner>
+    <joiner strength="30" apply="near2" consume="2" element="cts:near-query">NEAR/</joiner>
+    <joiner strength="50" apply="constraint">:</joiner>
+    <joiner strength="50" apply="constraint" compare="LT" tokenize="word">LT</joiner>
+    <joiner strength="50" apply="constraint" compare="LE" tokenize="word">LE</joiner>
+    <joiner strength="50" apply="constraint" compare="GT" tokenize="word">GT</joiner>
+    <joiner strength="50" apply="constraint" compare="GE" tokenize="word">GE</joiner>
+    <joiner strength="50" apply="constraint" compare="NE" tokenize="word">NE</joiner>
+  </grammar>
+  <sort-order direction="descending">
+    <score/>
+  </sort-order>
+  <transform-results apply="snippet">
+    <preferred-elements><element ns="" name="body"/></preferred-elements>
+    <max-matches>1</max-matches>
+    <max-snippet-chars>150</max-snippet-chars>
+    <per-match-tokens>20</per-match-tokens>
+  </transform-results>
+  <return-query>1</return-query>
+  <operator name="results">
+    <state name="compact">
+      <transform-results apply="snippet">
+        <preferred-elements><element ns="" name="body"/></preferred-elements>
+        <max-matches>1</max-matches>
+        <max-snippet-chars>150</max-snippet-chars>
+        <per-match-tokens>20</per-match-tokens>
+      </transform-results>
+    </state>
+    <state name="detailed">
+      <transform-results apply="snippet">
+        <preferred-elements><element ns="" name="body"/></preferred-elements>
+        <max-matches>2</max-matches>
+        <max-snippet-chars>400</max-snippet-chars>
+        <per-match-tokens>30</per-match-tokens>
+      </transform-results>
+    </state>
+  </operator>
+  <annotation>Delta options here</annotation>
+
+  <tuples name="points">
+    <uri/>
+    <range type="xs:string" collation="http://marklogic.com/collation/codepoint">
+      <element ns="http://marklogic.com/cms" name="gender"/>
+    </range>
+    <geo-attr-pair>
+      <parent ns="http://marklogic.com/cms" name="address"/>
+      <lat ns="" name="lat"/>
+      <lon ns="" name="lng"/>
+    </geo-attr-pair>
+  </tuples>
+
+  <constraint name="DocumentType">
+    <collection prefix=""/>
+  </constraint>
+
+  <!-- Provider facets -->
+      <constraint name="ProviderGender">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="http://marklogic.com/cms" name="gender"/>
+        </range>
+      </constraint>
+
+      <constraint name="ProviderSpecialty">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=15</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="http://marklogic.com/cms" name="specialization"/>
+        </range>
+      </constraint>
+
+      <constraint name="ProviderCredentials">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=15</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="http://marklogic.com/cms" name="credential"/>
+        </range>
+      </constraint>
+
+      <constraint name="ProviderType">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="http://marklogic.com/cms" name="entity-type"/>
+        </range>
+      </constraint>
+
+      <constraint name="ProviderLocation">
+        <geo-attr-pair>
+          <parent ns="http://marklogic.com/cms" name="address"/>
+          <lat ns="" name="lat"/>
+          <lon ns="" name="lng"/>
+        </geo-attr-pair>
+      </constraint>
+  <!-- END Provider facets -->
+
+
+  <!-- Patient facets -->
+      <constraint name="id">
+        <range type="xs:string" facet="false" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:id[@root="2.16.840.1.113883.4.1"]/@extension</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientProblems">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:act/hl7:entryRelationship/hl7:observation/hl7:value/hl7:translation[@codeSystemName="ICD9"]/@displayName</path-index>
+        </range>
+      </constraint>
+      <constraint name="PatientMedications">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:substanceAdministration/hl7:consumable/hl7:manufacturedProduct/hl7:manufacturedMaterial/hl7:code[@codeSystemName="NDC"]/@displayName</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientMedicalProcedures">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:code[@codeSystem="2.16.840.1.113883.6.1"]/@displayName</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientFamilyHistory">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation/hl7:code[@codeSystem="2.16.840.1.113883.6.96"]/@displayName</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientMaritalStatus">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:maritalStatusCode[@codeSystem="2.16.840.1.113883.5.2"]/@displayName</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientRace">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:raceCode[@codeSystem="2.16.840.1.113883.6.238"]/@displayName</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="PatientGender">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=5</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:administrativeGenderCode[@codeSystem="2.16.840.1.113883.5.1"]/@displayName</path-index>
+        </range>
+      </constraint>
+  <!-- End Patient facets -->
+
+  <!-- Claim Facets -->
+      <constraint name="ClaimType">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="" name="type"/>
+        </range>
+      </constraint>
+
+      <constraint name="DrugName">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <facet-option>limit=5</facet-option>
+          <element ns="" name="drug-name"/>
+        </range>
+      </constraint>
+
+      <constraint name="PaymentAmount">
+        <range type="xs:decimal" facet="true">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="" name="payment-amount"/>
+          <bucket name="0-100" ge="0" lt="101">0 - 100</bucket>
+          <bucket name="101-500" ge="101" lt="501">101 - 500</bucket>
+          <bucket name="501-1000" ge="501" lt="1001">501 - 1,000</bucket>
+          <bucket name="1001-10000" ge="1001" lt="10001">1,001 - 10,000</bucket>
+          <bucket name="10001-20000" ge="10001" lt="20001">10,001 - 20,000</bucket>
+          <bucket name="20001-50000" ge="20001" lt="50001">20,001 - 50,000</bucket>
+          <bucket name="50001-100000" ge="50001" lt="100001">50,001 - 100,000</bucket>
+          <bucket name="100001+" ge="100001">100001+</bucket>
+        </range>
+      </constraint>
+
+      <constraint name="DrugCost">
+        <range type="xs:decimal" facet="true">
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <element ns="" name="gross-drug-cost"/>
+          <bucket name="0-10" ge="0" lt="11">0 - 10</bucket>
+          <bucket name="11-20" ge="11" lt="21">11 - 20</bucket>
+          <bucket name="21-30" ge="21" lt="31">21 - 30</bucket>
+          <bucket name="31-40" ge="31" lt="41">31 - 40</bucket>
+          <bucket name="41-50" ge="41" lt="51">41 - 50</bucket>
+          <bucket name="51-60" ge="51" lt="61">51 - 60</bucket>
+          <bucket name="61-70" ge="61" lt="71">61 - 70</bucket>
+          <bucket name="71-80" ge="71" lt="81">71 - 80</bucket>
+          <bucket name="81-90" ge="81" lt="91">81 - 90</bucket>
+          <bucket name="91-100" ge="91" lt="101">91 - 100</bucket>
+          <bucket name="101-200" ge="101" lt="201">101 - 200</bucket>
+          <bucket name="201+" ge="201">201+</bucket>
+        </range>
+      </constraint>
+
+      <constraint name="ClaimProcedures">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=10</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index>/claim/procedures/procedure/name</path-index>
+        </range>
+      </constraint>
+
+      <constraint name="ClaimDiagnoses">
+        <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+          <facet-option>limit=10</facet-option>
+          <facet-option>frequency-order</facet-option>
+          <facet-option>descending</facet-option>
+          <path-index>/claim/diagnoses/diagnosis/name</path-index>
+        </range>
+      </constraint>
+  <!-- End Drug facets -->
+
+  <extract-metadata>
+    <constraint-value ref="DocumentType"/>
+  </extract-metadata>
+  <suggestion-source ref="Problems">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <suggestion-source ref="Medications">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <suggestion-source ref="MedicalProcedures">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <suggestion-source ref="FamilyHistory">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <suggestion-source ref="Race">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <suggestion-source ref="Gender">
+    <suggestion-option>frequency-order</suggestion-option>
+    <suggestion-option>descending</suggestion-option>
+  </suggestion-source>
+  <default-suggestion-source ref="Problems"/>
+</options>

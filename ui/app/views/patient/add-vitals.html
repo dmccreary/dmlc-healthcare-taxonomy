@@ -1,0 +1,33 @@
+<form role="form" name="vitalsForm" ng-submit="addVitalsCtrl.save()">
+  <div class="modal-header">
+    <strong>Add Vitals</strong>
+    <span class="close-modal pull-right" ng-click="addVitalsCtrl.close()">
+      <i class="fa fa-times"></i>
+    </span>
+  </div>
+  <div class="modal-body">
+      <div class="form-group">
+        <label for="vital-type">Vital Type:</label>
+        <select id="vital-type" class="form-control" ng-model="addVitalsCtrl.vitalType">
+          <option value="bp">Blood Pressure</option>
+          <option value="pulse">Heart Rate</option>
+          <option value="temp">Temperature</option>
+          <option value="weight">Weight</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="addVitalsCtrl.vitalType === 'bp'">
+        <label for="vital-value-systolic">Systolic (mm[Hg]):</label>
+        <input type="number" name="systolic" class="form-control" id="vital-value-systolic" ng-model="addVitalsCtrl.systolic" required>
+        <label for="vital-value-diastolic">Diastolic (mm[Hg]):</label>
+        <input type="number" name="diastolic" class="form-control" id="vital-value-diastolic" ng-model="addVitalsCtrl.diastolic" required>
+      </div>
+      <div class="form-group has-feedback" ng-if="addVitalsCtrl.vitalType !== 'bp'">
+        <label for="vital-value">Reading: ({{addVitalsCtrl.units}})</label>
+        <input type="number" name="vitalValue" class="form-control" id="vital-value" ng-model="addVitalsCtrl.vitalValue" required>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="addVitalsCtrl.close()">Close</button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>

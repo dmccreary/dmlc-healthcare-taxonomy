@@ -1,0 +1,2348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="CCD.xsl"?>
+<!--Copyright EXACTDATA, LLC. ALL RIGHTS RESERVED.-->
+<!--This file contains synthetic data depicting a fictional health summary. Any resemblance to a real person is coincidental.-->
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 http://xreg2.nist.gov:8080/hitspValidation/schema/cdar2c32/infrastructure/cda/C32_CDA.xsd" xmlns="urn:hl7-org:v3">
+  <realmCode code="US" />
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+  <templateId root="2.16.840.1.113883.10.20.3" />
+  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.1" />
+  <templateId root="2.16.840.1.113883.3.88.11.32.1" assigningAuthorityName="HITSP/C32" />
+  <id root="99B0D5A5-78E3-4F97-8A57-CE17894D4FE0" />
+  <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" displayName="Summarization of episode note" />
+  <title>Continuity of Care Document</title>
+  <effectiveTime value="20140331154800" />
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <!--Patient ID 000049232-01-->
+      <id extension="000-04-9232" root="2.16.840.1.113883.4.1" />
+      <addr use="HP">
+        <streetAddressLine>8192 Ferndale Street</streetAddressLine>
+        <city>Middletown</city>
+        <state>NY</state>
+        <postalCode>10943</postalCode>
+      </addr>
+      <telecom value="tel:+1-760-338-2081" use="HP" />
+      <patient>
+        <name>
+          <given>Lydia</given>
+          <given>L</given>
+          <family>Lester</family>
+        </name>
+        <administrativeGenderCode code="F" displayName="Female" codeSystemName="HL7 AdministrativeGenderCodes" codeSystem="2.16.840.1.113883.5.1" />
+        <birthTime value="19750622" />
+        <maritalStatusCode code="S" displayName="Never Married" codeSystem="2.16.840.1.113883.5.2" codeSystemName="MaritalStatusCode" />
+        <raceCode displayName="White" code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="CDC Race and Ethnicity" />
+        <languageCommunication>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.1" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.3.88.11.83.2" assigningAuthorityName="HITSP C83" />
+          <languageCode code="en-US" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20140331154800" />
+    <assignedAuthor>
+      <id extension="2033311982" root="2.16.840.1.113883.4.6" />
+      <addr use="WP">
+        <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+        <city>New Hampton</city>
+        <state>NY</state>
+        <postalCode>10958</postalCode>
+      </addr>
+      <telecom value="tel:+1-716-664-0563" use="WP" />
+      <assignedPerson>
+        <realmCode code="US" />
+        <name>
+          <given>Brett</given>
+          <family>Shepard</family>
+          <suffix>MD</suffix>
+        </name>
+      </assignedPerson>
+      <representedOrganization>
+        <id root="2.16.840.1.113883.4.450" />
+        <name>ExactData County Medical Center</name>
+        <telecom use="WP" nullFlavor="UNK" />
+        <addr use="WP" nullFlavor="UNK" />
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.16.840.1.113883.4.450" />
+        <name>ExactData County Medical Center</name>
+        <telecom use="WP" nullFlavor="UNK" />
+        <addr use="WP" nullFlavor="UNK" />
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <participant typeCode="IND">
+    <templateId root="2.16.840.1.113883.3.88.11.83.3" />
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.4" />
+    <time value="20140331154800" />
+    <associatedEntity classCode="ECON">
+      <code code="FRND" displayName="unrelated friend" codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode" />
+      <addr />
+      <telecom value="tel:+1-530-448-7221" use="HP" />
+      <associatedPerson>
+        <name>
+          <given>Aubrey</given>
+          <family>Lawson</family>
+        </name>
+      </associatedPerson>
+    </associatedEntity>
+  </participant>
+  <documentationOf>
+    <serviceEvent classCode="PCPR">
+      <effectiveTime>
+        <low value="20140331154800" />
+        <high value="20140331154800" />
+      </effectiveTime>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.3.88.11.83.4" />
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.3" />
+        <functionCode code="PP" displayName="Primary Care Provider" codeSystem="2.16.840.1.113883.12.443" codeSystemName="Provider Role">
+          <originalText>Primary Care Provider</originalText>
+        </functionCode>
+        <time>
+          <low value="20140317193000" />
+          <high value="20140317193000" />
+        </time>
+        <assignedEntity>
+          <id extension="2033311982" root="2.16.840.1.113883.4.6" />
+          <code code="200000000X" displayName="Allopathic &amp; Osteopathic Physicians" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Provider Codes" />
+          <addr use="WP">
+            <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+            <city>New Hampton</city>
+            <state>NY</state>
+            <postalCode>10958</postalCode>
+          </addr>
+          <telecom value="tel:+1-716-664-0563" use="WP" />
+          <assignedPerson>
+            <realmCode code="US" />
+            <name>
+              <given>Brett</given>
+              <family>Shepard</family>
+              <suffix>MD</suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization>
+            <id root="2.16.840.1.113883.4.450" />
+            <name>ExactData County Medical Center</name>
+            <telecom use="WP" nullFlavor="UNK" />
+            <addr use="WP" nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.3.88.11.83.4" />
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.3" />
+        <functionCode code="PP" displayName="Primary Care Provider" codeSystem="2.16.840.1.113883.12.443" codeSystemName="Provider Role">
+          <originalText>Primary Care Provider</originalText>
+        </functionCode>
+        <time>
+          <low value="20140331154800" />
+          <high value="20140331154800" />
+        </time>
+        <assignedEntity>
+          <id extension="2464333497" root="2.16.840.1.113883.4.6" />
+          <code code="200000000X" displayName="Allopathic &amp; Osteopathic Physicians" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Provider Codes" />
+          <addr use="WP">
+            <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+            <city>Newburgh</city>
+            <state>NY</state>
+            <postalCode>12550</postalCode>
+          </addr>
+          <telecom value="tel:+1-480-390-8153" use="WP" />
+          <assignedPerson>
+            <realmCode code="US" />
+            <name>
+              <given>Ashely</given>
+              <family>Decker</family>
+              <suffix></suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization>
+            <id root="2.16.840.1.113883.4.450" />
+            <name>ExactData County Medical Center</name>
+            <telecom use="WP" nullFlavor="UNK" />
+            <addr use="WP" nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.3.88.11.83.4" />
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.3" />
+        <functionCode code="PP" displayName="Primary Care Provider" codeSystem="2.16.840.1.113883.12.443" codeSystemName="Provider Role">
+          <originalText>Primary Care Provider</originalText>
+        </functionCode>
+        <time>
+          <low value="20140325183000" />
+          <high value="20140325183000" />
+        </time>
+        <assignedEntity>
+          <id extension="1260896558" root="2.16.840.1.113883.4.6" />
+          <code code="200000000X" displayName="Allopathic &amp; Osteopathic Physicians" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Provider Codes" />
+          <addr use="WP">
+            <streetAddressLine>6978 Belduque Court</streetAddressLine>
+            <city>Sparrow Bush</city>
+            <state>NY</state>
+            <postalCode>12780</postalCode>
+          </addr>
+          <telecom value="tel:+1-724-274-4226" use="WP" />
+          <assignedPerson>
+            <realmCode code="US" />
+            <name>
+              <given>Idola</given>
+              <family>Maxwell</family>
+              <suffix>MD</suffix>
+            </name>
+          </assignedPerson>
+          <representedOrganization>
+            <id root="2.16.840.1.113883.4.450" />
+            <name>ExactData County Medical Center</name>
+            <telecom use="WP" nullFlavor="UNK" />
+            <addr use="WP" nullFlavor="UNK" />
+          </representedOrganization>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <component>
+    <structuredBody>
+      <component>
+        <!--Purpose section-->
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.1.13" />
+          <!--Purpose section template-->
+          <code code="48764-5" displayName="Purpose" codeSystem="2.16.840.1.113883.6.1" />
+          <title>Summary of Purpose</title>
+          <text>Transfer of care</text>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.30" />
+              <!--Purpose activity template-->
+              <code code="23745001" codeSystem="2.16.840.1.113883.6.96" displayName="Documentation procedure" />
+              <statusCode code="completed" />
+              <entryRelationship typeCode="RSON">
+                <act classCode="ACT" moodCode="EVN">
+                  <code code="308292007" codeSystem="2.16.840.1.113883.6.96" displayName="Transfer of care" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Problems Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.3.88.11.83.103" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.6" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.10.20.1.11" assigningAuthorityName="HL7 CCD" />
+          <!--Problem section template-->
+          <code code="11450-4" displayName="Problems" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+          <title>Problems</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>Status</th>
+                  <th>Onset Date</th>
+                  <th>Resolution Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ID="problem-1">Acute Renal Failure</td>
+                  <td ID="problem-status-1">Active</td>
+                  <td>5/20/2010</td>
+                  <td>Ongoing</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.27" assigningAuthorityName="CCD" />
+              <templateId root="2.16.840.1.113883.3.88.11.83.7" assigningAuthorityName="HITSP C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.2" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5.1" assigningAuthorityName="IHE PCC" />
+              <!--Problem act template-->
+              <id root="9B045020-C810-492D-836A-F8298605061F" />
+              <code nullFlavor="NA" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20100520000000" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <low value="20140331154800" />
+                  <high value="20140331154800" />
+                </time>
+                <assignedEntity>
+                  <id extension="2464333497" root="2.16.840.1.113883.4.6" />
+                  <addr use="WP">
+                    <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                    <city>Newburgh</city>
+                    <state>NY</state>
+                    <postalCode>12550</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-480-390-8153" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Ashely</given>
+                      <family>Decker</family>
+                      <suffix></suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id root="2.16.840.1.113883.4.450" />
+                    <name>ExactData County Medical Center</name>
+                    <telecom use="WP" nullFlavor="UNK" />
+                    <addr use="WP" nullFlavor="UNK" />
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <entryRelationship typeCode="SUBJ" inversionInd="false">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.28" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.5" assigningAuthorityName="IHE PCC" />
+                  <!--Problem observation template-->
+                  <id root="9B045020-C810-492D-836A-F8298605061F" />
+                  <code code="64572001" displayName="Disease" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <text>
+                    <reference value="#problem-1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20140331154800" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="14669001" displayName="ACUTE RENAL FAILURE" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <translation code="584.9" displayName="Acute Renal Failure" codeSystemName="ICD9" codeSystem="2.16.840.1.113883.6.103" />
+                  </value>
+                  <entryRelationship typeCode="REFR" inversionInd="false">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <templateId root="2.16.840.1.113883.10.20.1.50" assigningAuthorityName="CCD" />
+                      <templateId root="2.16.840.1.113883.10.20.1.57" assigningAuthorityName="CCD" />
+                      <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.1.1" assigningAuthorityName="IHE PCC" />
+                      <code code="33999-4" displayName="Status" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                      <text>
+                        <reference value="#problem-status-1" />
+                      </text>
+                      <statusCode code="completed" />
+                      <value xsi:type="CE" code="55561003" displayName="Active" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Results Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.3.88.11.83.122" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.28" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.10.20.1.14" assigningAuthorityName="CCD" />
+          <code code="30954-2" displayName="Relevant diagnostic tests and/or laboratory data" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+          <title>Results</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Result</th>
+                  <th>Preformer</th>
+                  <th>Date Collected</th>
+                  <th>Date Resulted</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="result-1">Retrograde Pyelogram</content>
+                  </td>
+                  <td>
+                    <content ID="result-1_1_1">shows no obstruction</content>
+                  </td>
+                  <td>Drew Medical Labs</td>
+                  <td>2013-05-24T20:54:00Z</td>
+                  <td>2013-05-25T00:10:34Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="result-2">US Kidney</content>
+                  </td>
+                  <td>
+                    <content ID="result-2_1_1">enlarge, flabby and pale with edema</content>
+                  </td>
+                  <td>Drew Medical Labs</td>
+                  <td>2014-03-31T15:48:00Z</td>
+                  <td>2014-03-31T20:20:38Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="result-3">Abdominal X-Ray</content>
+                  </td>
+                  <td>
+                    <content ID="result-3_2_1">Obstructing Kidney/Ureter Stones(+)</content>
+                  </td>
+                  <td>Drew Medical Labs</td>
+                  <td>2014-03-31T15:48:00Z</td>
+                  <td>2014-03-31T20:16:27Z</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="COMP">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <id root="2.16.840.1.113883.4.450" extension="130524 CH 19349780" />
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="38105-3" displayName="Retrograde Pyelogram" />
+              <statusCode code="completed" />
+              <component>
+                <procedure classCode="PROC" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.17" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.29" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.19" assigningAuthorityName="IHE PCC" />
+                  <!--Result procedure observation template-->
+                  <id root="F6B181D8-3A8C-4818-8ABB-1BE42D72213E" />
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="38105-3" displayName="Retrograde Pyelogram">
+                    <originalText>
+                      <reference value="#result-1" />
+                    </originalText>
+                  </code>
+                  <text>
+                    <reference value="#result-1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130524205400" />
+                  <performer typeCode="PRF">
+                    <time>
+                      <high value="20130524205400" />
+                    </time>
+                    <assignedEntity>
+                      <id extension="484989529" root="2.16.840.1.113883.4.450" />
+                      <addr use="WP">
+                        <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                        <city>Newburgh</city>
+                        <state>NY</state>
+                        <postalCode>12550</postalCode>
+                      </addr>
+                      <telecom value="tel:+1-480-390-8153" use="WP" />
+                      <assignedPerson>
+                        <realmCode code="US" />
+                        <name>
+                          <given>Ashely</given>
+                          <family>Decker</family>
+                          <suffix></suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id nullFlavor="UNK" />
+                        <name>Drew Medical Labs</name>
+                        <telecom use="WP" value="tel:+1-480-390-8153" />
+                        <addr use="WP">
+                          <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                          <city>Newburgh</city>
+                          <state>NY</state>
+                          <postalCode>12550</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedEntity>
+                  </performer>
+                </procedure>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.15.1" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <!--Result observation template-->
+                  <id root="7D72A349-BD74-4F82-8F1A-A52EAF9F7AD1" />
+                  <code code="38105-3" displayName="Retrograde Pyelogram" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <text>
+                    <reference value="#result-1_1_1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130525001034" />
+                  <value xsi:type="ST">shows no obstruction</value>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="COMP">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <id root="2.16.840.1.113883.4.450" extension="140331 CH 93318003" />
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="38036-0" displayName="US Kidney" />
+              <statusCode code="completed" />
+              <component>
+                <procedure classCode="PROC" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.17" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.29" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.19" assigningAuthorityName="IHE PCC" />
+                  <!--Result procedure observation template-->
+                  <id root="D3CFCE57-630F-4EC6-85AC-40D0F0AC3669" />
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="38036-0" displayName="US Kidney">
+                    <originalText>
+                      <reference value="#result-2" />
+                    </originalText>
+                  </code>
+                  <text>
+                    <reference value="#result-2" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140331154800" />
+                  <performer typeCode="PRF">
+                    <time>
+                      <high value="20140331154800" />
+                    </time>
+                    <assignedEntity>
+                      <id extension="484989529" root="2.16.840.1.113883.4.450" />
+                      <addr use="WP">
+                        <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                        <city>Newburgh</city>
+                        <state>NY</state>
+                        <postalCode>12550</postalCode>
+                      </addr>
+                      <telecom value="tel:+1-480-390-8153" use="WP" />
+                      <assignedPerson>
+                        <realmCode code="US" />
+                        <name>
+                          <given>Ashely</given>
+                          <family>Decker</family>
+                          <suffix></suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id nullFlavor="UNK" />
+                        <name>Drew Medical Labs</name>
+                        <telecom use="WP" value="tel:+1-480-390-8153" />
+                        <addr use="WP">
+                          <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                          <city>Newburgh</city>
+                          <state>NY</state>
+                          <postalCode>12550</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedEntity>
+                  </performer>
+                </procedure>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.15.1" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <!--Result observation template-->
+                  <id root="DE85FD6D-4756-457F-8A2E-2951521FEC22" />
+                  <code code="38036-0" displayName="US Kidney" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <text>
+                    <reference value="#result-2_1_1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140331202038" />
+                  <value xsi:type="ST">enlarge, flabby and pale with edema</value>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="COMP">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <id root="2.16.840.1.113883.4.450" extension="140331 CH 20593176" />
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="24799-9" displayName="Abdominal X-Ray" />
+              <statusCode code="completed" />
+              <component>
+                <procedure classCode="PROC" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.17" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.29" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.19" assigningAuthorityName="IHE PCC" />
+                  <!--Result procedure observation template-->
+                  <id root="7101529E-ADFA-419E-86E4-BEB2DDA7939C" />
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="24799-9" displayName="Abdominal X-Ray">
+                    <originalText>
+                      <reference value="#result-3" />
+                    </originalText>
+                  </code>
+                  <text>
+                    <reference value="#result-3" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140331154800" />
+                  <performer typeCode="PRF">
+                    <time>
+                      <high value="20140331154800" />
+                    </time>
+                    <assignedEntity>
+                      <id extension="484989529" root="2.16.840.1.113883.4.450" />
+                      <addr use="WP">
+                        <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                        <city>Newburgh</city>
+                        <state>NY</state>
+                        <postalCode>12550</postalCode>
+                      </addr>
+                      <telecom value="tel:+1-480-390-8153" use="WP" />
+                      <assignedPerson>
+                        <realmCode code="US" />
+                        <name>
+                          <given>Ashely</given>
+                          <family>Decker</family>
+                          <suffix></suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id nullFlavor="UNK" />
+                        <name>Drew Medical Labs</name>
+                        <telecom use="WP" value="tel:+1-480-390-8153" />
+                        <addr use="WP">
+                          <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                          <city>Newburgh</city>
+                          <state>NY</state>
+                          <postalCode>12550</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedEntity>
+                  </performer>
+                </procedure>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.15.1" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <!--Result observation template-->
+                  <id root="C5957F54-10F6-422A-81D6-6D370B80D834" />
+                  <code code="24799-9" displayName="Abdominal X-Ray" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <text>
+                    <reference value="#result-3_2_1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140331201627" />
+                  <value xsi:type="ST">Obstructing Kidney/Ureter Stones(+)</value>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Medications Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.3.88.11.83.112" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.19" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.10.20.1.8" assigningAuthorityName="HL7 CCD" />
+          <code code="10160-0" displayName="History of medication use" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+          <title>Medications</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Medication</th>
+                  <th>Dosage</th>
+                  <th>Days Supplied</th>
+                  <th>Last Filled Date</th>
+                  <th>Refills Remaining</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="med-1">Isotonic Saline (0.9%)</content>
+                  </td>
+                  <td>150 cc/hr</td>
+                  <td>1</td>
+                  <td>2013-05-26T08:43:00Z</td>
+                  <td>0</td>
+                  <td>Completed</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <substanceAdministration moodCode="EVN" classCode="SBADM">
+              <templateId root="2.16.840.1.113883.3.88.11.83.8" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1" assigningAuthorityName="IHE PCC" />
+              <id root="3AE56C50-CE0E-4495-815E-61E28AC209CE" />
+              <statusCode code="completed" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20130526084300" />
+                <high nullFlavor="UNK" />
+              </effectiveTime>
+              <doseQuantity value="150" unit="cc/hr" />
+              <consumable>
+                <manufacturedProduct>
+                  <templateId root="2.16.840.1.113883.3.88.11.83.8.2" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.53" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2" assigningAuthorityName="IHE PCC" />
+                  <manufacturedMaterial>
+                    <code code="00026440005" displayName="Isotonic Saline (0.9%)" codeSystemName="NDC" codeSystem="2.16.840.1.113883.6.69">
+                      <originalText>
+                        <reference value="#med-1" />
+                      </originalText>
+                    </code>
+                    <name>Isotonic Saline (0.9%)</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.8.1" />
+                  <code code="73639000" displayName="Prescription Drug" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.57" />
+                  <templateId root="2.16.840.1.113883.10.20.1.47" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" displayName="Status" codeSystemName="LOINC" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="73425007" displayName="No Longer Active" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.8.3" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.3" />
+                  <templateId root="2.16.840.1.113883.10.20.1.34" />
+                  <id root="2.16.840.1.113883.4.450" extension="130522-44820" />
+                  <repeatNumber value="1" />
+                  <quantity value="1000" unit="{UNASSIGNED}" />
+                  <author>
+                    <time value="20130522204500" />
+                    <assignedAuthor>
+                      <id extension="375741414" root="2.16.840.1.113883.4.450" />
+                      <addr use="WP">
+                        <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                        <city>New Hampton</city>
+                        <state>NY</state>
+                        <postalCode>10958</postalCode>
+                      </addr>
+                      <telecom value="tel:+1-716-664-0563" use="WP" />
+                      <assignedPerson>
+                        <realmCode code="US" />
+                        <name>
+                          <given>Brett</given>
+                          <family>Shepard</family>
+                          <suffix>Dr.</suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id nullFlavor="UNK" />
+                        <name>Nancy E Falk MD</name>
+                        <telecom use="WP" value="tel:+1-716-664-0563" />
+                        <addr use="WP">
+                          <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                          <city>New Hampton</city>
+                          <state>NY</state>
+                          <postalCode>10958</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedAuthor>
+                  </author>
+                </supply>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.34" assigningAuthorityName="CCD" />
+                  <id root="2.16.840.1.113883.4.450" extension="RX14707678" assigningAuthorityName="Sunrise Pharmacy" />
+                  <code nullFlavor="NA" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130526084300" />
+                  <repeatNumber value="1" />
+                  <quantity value="1000" />
+                  <performer>
+                    <assignedEntity>
+                      <id extension="100558475" root="2.16.840.1.113883.4.450" />
+                      <addr use="WP">
+                        <streetAddressLine>3651 Pine Street</streetAddressLine>
+                        <city>Sparrow Bush</city>
+                        <state>NY</state>
+                        <postalCode>12780</postalCode>
+                      </addr>
+                      <telecom value="tel:+1-479-527-2985" use="WP" />
+                      <assignedPerson>
+                        <realmCode code="US" />
+                        <name>
+                          <given>Brenden</given>
+                          <family>Boyd</family>
+                          <suffix></suffix>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id nullFlavor="UNK" />
+                        <name>Sunrise Pharmacy</name>
+                        <telecom use="WP" value="tel:+1-479-527-2985" />
+                        <addr use="WP">
+                          <streetAddressLine>3651 Pine Street</streetAddressLine>
+                          <city>Sparrow Bush</city>
+                          <state>NY</state>
+                          <postalCode>12780</postalCode>
+                        </addr>
+                      </representedOrganization>
+                    </assignedEntity>
+                  </performer>
+                </supply>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Vital signs Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.1.16" assigningAuthorityName="HL7 CCD" />
+          <templateId root="2.16.840.1.113883.3.88.11.83.119" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2" assigningAuthorityName="IHE PCC" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.25" assigningAuthorityName="IHE PCC" />
+          <!--Vital Signs section template-->
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs" />
+          <title>Vital Signs</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Body height</th>
+                  <th>Body weight</th>
+                  <th>Respiration Rate</th>
+                  <th>Pulse</th>
+                  <th>Systolic BP</th>
+                  <th>Diastolic BP</th>
+                  <th>Temperature</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2013-05-22T20:45:00Z</td>
+                  <td>
+                    <content ID="vital_1">70 [in_us]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_2">178 [lb_av]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_3">17 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_4">79 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_5">110 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_6">72 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_7">98.2 [degF]</content>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2014-03-17T19:30:00Z</td>
+                  <td>
+                    <content ID="vital_8">69 [in_us]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_9">176 [lb_av]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_10">17 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_11">76 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_12">110 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_13">70 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_14">97.8 [degF]</content>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2014-03-25T18:30:00Z</td>
+                  <td>
+                    <content ID="vital_15">69 [in_us]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_16">174 [lb_av]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_17">16 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_18">76 /min</content>
+                  </td>
+                  <td>
+                    <content ID="vital_19">108 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_20">67 mm[Hg]</content>
+                  </td>
+                  <td>
+                    <content ID="vital_21">97.7 [degF]</content>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <templateId root="2.16.840.1.113883.10.20.1.35" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1" assigningAuthorityName="IHE PCC" />
+              <!--Vital signs organizer template-->
+              <id root="47A9D21D-DCBF-4FFF-87BB-CCCE27EAE297" />
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital signs" codeSystemName="SNOMED CT" />
+              <statusCode code="completed" />
+              <effectiveTime value="20130522204500" />
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="A827C1BD-CDB5-406F-8C55-583EBD71C008" />
+                  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body height" />
+                  <text>
+                    <reference value="#vital_1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="70" unit="[in_us]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="055D805E-CBE4-4D75-8AB6-6FC28C537580" />
+                  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body weight" />
+                  <text>
+                    <reference value="#vital_2" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="178" unit="[lb_av]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="7ED2CA18-886D-4BD6-8286-91927FA8B76A" />
+                  <code code="9279-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESPIRATION RATE" />
+                  <text>
+                    <reference value="#vital_3" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="17" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="064D59A9-B614-4772-865E-0EB604A66A42" />
+                  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HEART BEAT" />
+                  <text>
+                    <reference value="#vital_4" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="79" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="B8898E4A-C6E5-46D4-893D-08A0D3940439" />
+                  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Systolic BP" />
+                  <text>
+                    <reference value="#vital_5" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="110" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="0BA67958-7C4C-4B4D-8AC8-FBC6814A0A8B" />
+                  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diastolic BP" />
+                  <text>
+                    <reference value="#vital_6" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="72" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="4BB01BFB-8061-4784-869C-EB19700B1735" />
+                  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="BODY TEMPERATURE" />
+                  <text>
+                    <reference value="#vital_7" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130522204500" />
+                  <value xsi:type="PQ" value="98.2" unit="[degF]" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <templateId root="2.16.840.1.113883.10.20.1.35" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1" assigningAuthorityName="IHE PCC" />
+              <!--Vital signs organizer template-->
+              <id root="FB744C2B-2E62-4F62-8CE4-2AF8E62179BC" />
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital signs" codeSystemName="SNOMED CT" />
+              <statusCode code="completed" />
+              <effectiveTime value="20140317193000" />
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="CC07ED03-15DD-4662-8DF8-3C068C2757E4" />
+                  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body height" />
+                  <text>
+                    <reference value="#vital_8" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="69" unit="[in_us]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="F3684722-7C42-4D12-8658-5741DF0C2A9E" />
+                  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body weight" />
+                  <text>
+                    <reference value="#vital_9" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="176" unit="[lb_av]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="0FD6E7A7-9178-482F-8BFB-7A61FC54A3AD" />
+                  <code code="9279-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESPIRATION RATE" />
+                  <text>
+                    <reference value="#vital_10" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="17" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="9E982C50-6FDF-42FD-8B95-00CF8E295CB5" />
+                  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HEART BEAT" />
+                  <text>
+                    <reference value="#vital_11" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="76" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="BD439AC9-E835-403C-8A62-BAD983E7C53D" />
+                  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Systolic BP" />
+                  <text>
+                    <reference value="#vital_12" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="110" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="2375F2A4-8DE5-49C0-8920-37134FB58E1C" />
+                  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diastolic BP" />
+                  <text>
+                    <reference value="#vital_13" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="70" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="FDF3260F-AFB5-4290-8C68-289A61057A75" />
+                  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="BODY TEMPERATURE" />
+                  <text>
+                    <reference value="#vital_14" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140317193000" />
+                  <value xsi:type="PQ" value="97.8" unit="[degF]" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry typeCode="DRIV">
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD" />
+              <templateId root="2.16.840.1.113883.10.20.1.35" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1" assigningAuthorityName="IHE PCC" />
+              <!--Vital signs organizer template-->
+              <id root="119E5B32-C886-46FB-80B6-29077E3F2319" />
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital signs" codeSystemName="SNOMED CT" />
+              <statusCode code="completed" />
+              <effectiveTime value="20140325183000" />
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="AEC5D60E-AD70-42D9-84BE-5A0612C5D75D" />
+                  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body height" />
+                  <text>
+                    <reference value="#vital_15" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="69" unit="[in_us]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="7B5DA465-C957-425F-89A9-A431B3C6D8FE" />
+                  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Body weight" />
+                  <text>
+                    <reference value="#vital_16" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="174" unit="[lb_av]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="3CB6DC71-A06D-4EB7-8DC2-47B0673BB3C2" />
+                  <code code="9279-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="RESPIRATION RATE" />
+                  <text>
+                    <reference value="#vital_17" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="16" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="D2F37F25-4A57-4AAE-8113-AD4ECA0F31B2" />
+                  <code code="8867-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HEART BEAT" />
+                  <text>
+                    <reference value="#vital_18" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="76" unit="/min" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="70712E6E-92AE-4CF9-8564-F651637572D7" />
+                  <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Systolic BP" />
+                  <text>
+                    <reference value="#vital_19" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="108" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="74FE8150-8702-46C4-8971-C61163F980AA" />
+                  <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diastolic BP" />
+                  <text>
+                    <reference value="#vital_20" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="67" unit="mm[Hg]" />
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+                  <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD" />
+                  <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP/C83" />
+                  <!--Result observation template-->
+                  <id root="CBFE787C-EE45-46F0-8298-5640A8F2951F" />
+                  <code code="8310-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="BODY TEMPERATURE" />
+                  <text>
+                    <reference value="#vital_21" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20140325183000" />
+                  <value xsi:type="PQ" value="97.7" unit="[degF]" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Encounters Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.3.88.11.83.127" assigningAuthorityName="HITSP C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.5.3.3" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.10.20.1.3" assigningAuthorityName="HL7 CCD" />
+          <!--Encounters section template-->
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of encounters" />
+          <title>Encounters</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Encounter</th>
+                  <th>Performer</th>
+                  <th>Location</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2013-05-22T20:45:00Z</td>
+                  <td>
+                    <content ID="encounter-1">Walk-In</content>
+                  </td>
+                  <td>Brett Shepard MD</td>
+                  <td>Nancy E Falk MD</td>
+                  <td>
+                    <content ID="encounter-note-1">s:pt complains of Kidney. NKDA. she is a 37 yo female. o:Height 70 in, Weight 178 lbs, Temperature 98.2 F, Pulse 79, SystolicBP 110, DiastolicBP 72, Respiration 17 a:Acute Renal Failure p:performed E/M Level 2 (new patient) - Completed, and prescribed Isotonic Saline (0.9%) - 150 cc/hr bolus, and ordered Retrograde Pyelogram.</content>
+                    <content2 ID="encounter-note-1" xmlns="">
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Subjective" Code="15">s:</Term>
+                      <Unmatched>pt complains</Unmatched>
+                      <Unmatched>of</Unmatched>
+                      <Unmatched>Kidney</Unmatched>
+                      <Unmatched>NKDA</Unmatched>
+                      <Unmatched>she is a</Unmatched>
+                      <SiftGroup>
+                        <Value Value="37">37</Value>
+                        <Term Catalog="SYM_CA_SIFT_TIME_UNIT" AGE_UNIT_OF_MEASURE="year" Code="14">yo</Term>
+                      </SiftGroup>
+                      <Term Catalog="SYM_CA_SIFT_GENDER" GENDER="Female" Code="F">Female</Term>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Objective" Code="11">o:</Term>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="height" Code="2">height</Term>
+                        <Value Value="70">70</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="inch" Code="61">in</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="weight" Code="7">weight</Term>
+                        <Value Value="178">178</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="pound" Code="7">lbs</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="temperature" Code="6">temperature</Term>
+                        <Value Value="98.2">98.2</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="degree, fahrenheit" Code="60">F</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="pulse" Code="3">pulse</Term>
+                        <Value Value="79">79</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="systolic blood pressure" Code="5">systolicbp</Term>
+                        <Value Value="110">110</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="diastolic blood pressure" Code="1">diastolicbp</Term>
+                        <Value Value="72">72</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="respiration" Code="4">respiration</Term>
+                        <Value Value="17">17</Value>
+                      </SiftGroup>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Assessment" Code="2">a:</Term>
+                      <Term Catalog="SYM_SNO_INT_USEXT" DISEASE="Acute renal failure syndrome" Code="14669001">Acute renal failure</Term>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Plan" Code="12">p:</Term>
+                      <Unmatched>performed</Unmatched>
+                      <Value Value="E/MALE Level 2 (new patient) - Completed , ">E/MALE Level 2 (new patient) - Completed , </Value>
+                      <Unmatched>and</Unmatched>
+                      <Unmatched>prescribed Isotonic Saline (</Unmatched>
+                      <Unmatched>0.9</Unmatched>
+                      <Unmatched>%) -</Unmatched>
+                      <Unmatched>150</Unmatched>
+                      <Unmatched>cc/hr bolus ,</Unmatched>
+                      <Unmatched>and</Unmatched>
+                      <Value Value="ordered Retrograde Pyelogram">ordered Retrograde Pyelogram</Value>
+                    </content2>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2013-05-24T20:54:00Z</td>
+                  <td>
+                    <content ID="encounter-2">Walk-In</content>
+                  </td>
+                  <td>Ashely Decker </td>
+                  <td>Drew Medical Labs</td>
+                  <td>
+                    <content ID="encounter-note-2"></content>
+                    <content2 ID="encounter-note-2" xmlns=""></content2>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2014-03-17T19:30:00Z</td>
+                  <td>
+                    <content ID="encounter-3">Walk-In</content>
+                  </td>
+                  <td>Brett Shepard MD</td>
+                  <td>Nancy E Falk MD</td>
+                  <td>
+                    <content ID="encounter-note-3">s:female aged 38 ys presents with 2 days history of worsening Kidney. o:Height 69 in, Weight 176 lbs, Temperature 97.8 F, Pulse 76, SystolicBP 110, DiastolicBP 70, Respiration 17 a:Acute Renal Failure p:performed E/M Level 2 (established patient) - Completed, and referred patient to nephrology.</content>
+                    <content2 ID="encounter-note-3" xmlns="">
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Subjective" Code="15">s:</Term>
+                      <Term Catalog="SYM_CA_SIFT_GENDER" GENDER="Female" Code="F">Female</Term>
+                      <Unmatched>aged </Unmatched>
+                      <SiftGroup>
+                        <Value Value="38">38</Value>
+                        <Term Catalog="SYM_CA_SIFT_TIME_UNIT" AGE_UNIT_OF_MEASURE="year" Code="14">ys</Term>
+                      </SiftGroup>
+                      <Unmatched>presents</Unmatched>
+                      <Unmatched>with</Unmatched>
+                      <Unmatched>2</Unmatched>
+                      <Unmatched>days history</Unmatched>
+                      <Unmatched>of</Unmatched>
+                      <Unmatched>worsening Kidney</Unmatched>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Objective" Code="11">o:</Term>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="height" Code="2">height</Term>
+                        <Value Value="69">69</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="inch" Code="61">in</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="weight" Code="7">weight</Term>
+                        <Value Value="176">176</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="pound" Code="7">lbs</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="temperature" Code="6">temperature</Term>
+                        <Value Value="97.8">97.8</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="degree, fahrenheit" Code="60">F</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="pulse" Code="3">pulse</Term>
+                        <Value Value="76">76</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="systolic blood pressure" Code="5">systolicbp</Term>
+                        <Value Value="110">110</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="diastolic blood pressure" Code="1">diastolicbp</Term>
+                        <Value Value="70">70</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="respiration" Code="4">respiration</Term>
+                        <Value Value="17">17</Value>
+                      </SiftGroup>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Assessment" Code="2">a:</Term>
+                      <Term Catalog="SYM_SNO_INT_USEXT" DISEASE="Acute renal failure syndrome" Code="14669001">Acute renal failure</Term>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Plan" Code="12">p:</Term>
+                      <Unmatched>performed</Unmatched>
+                      <Value Value="E/MALE Level 2 (established patient) - Completed , ">E/MALE Level 2 (established patient) - Completed , </Value>
+                      <Unmatched>and</Unmatched>
+                      <Unmatched>referred patient</Unmatched>
+                      <Unmatched>to</Unmatched>
+                      <Value Value="nephrology">nephrology</Value>
+                    </content2>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2014-03-25T18:30:00Z</td>
+                  <td>
+                    <content ID="encounter-4">Walk-In</content>
+                  </td>
+                  <td>Idola Maxwell MD</td>
+                  <td>Kidney Center of Excellence</td>
+                  <td>
+                    <content ID="encounter-note-4">s:38 year old female air traffic controller presents with 3 years history of Kidney. o:Height 69 in, Weight 174 lbs, Temperature 97.7 F, Pulse 76, SystolicBP 108, DiastolicBP 67, Respiration 16 a:Acute Renal Failure p:performed E/M Level 2 (new patient) - Completed, and ordered US Kidney, Abdominal X-Ray.</content>
+                    <content2 ID="encounter-note-4" xmlns="">
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Subjective" Code="15">s:</Term>
+                      <SiftGroup>
+                        <Value Value="38">38</Value>
+                        <Term Catalog="SYM_CA_SIFT_TIME_UNIT" AGE_UNIT_OF_MEASURE="year" Code="14">years</Term>
+                      </SiftGroup>
+                      <Term Catalog="SYM_CA_SIFT_GENDER" GENDER="Female" Code="F">Female</Term>
+                      <Term Catalog="SYM_CA_OCCUPATIONS" OCCUPATION="air traffic controller" Code="4">air traffic controller</Term>
+                      <Unmatched>presents</Unmatched>
+                      <Unmatched>with</Unmatched>
+                      <Unmatched>3</Unmatched>
+                      <Unmatched>years history</Unmatched>
+                      <Unmatched>of</Unmatched>
+                      <Unmatched>Kidney</Unmatched>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Objective" Code="11">o:</Term>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="height" Code="2">height</Term>
+                        <Value Value="69">69</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="inch" Code="61">in</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="weight" Code="7">weight</Term>
+                        <Value Value="174">174</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="pound" Code="7">lbs</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="temperature" Code="6">temperature</Term>
+                        <Value Value="97.7">97.7</Value>
+                        <Term Catalog="SYM_CA_UOM" VITAL_SIGN_UOM="degree, fahrenheit" Code="60">F</Term>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="pulse" Code="3">pulse</Term>
+                        <Value Value="76">76</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="systolic blood pressure" Code="5">systolicbp</Term>
+                        <Value Value="108">108</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="diastolic blood pressure" Code="1">diastolicbp</Term>
+                        <Value Value="67">67</Value>
+                      </SiftGroup>
+                      <Unmatched>,</Unmatched>
+                      <SiftGroup>
+                        <Term Catalog="SYM_CA_VITALS" VITAL_SIGN="respiration" Code="4">respiration</Term>
+                        <Value Value="16">16</Value>
+                      </SiftGroup>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Assessment" Code="2">a:</Term>
+                      <Term Catalog="SYM_SNO_INT_USEXT" DISEASE="Acute renal failure syndrome" Code="14669001">Acute renal failure</Term>
+                      <Term Catalog="SYM_CA_SOAP_HEADERS" SOAP_SECTION="Plan" Code="12">p:</Term>
+                      <Unmatched>performed</Unmatched>
+                      <Value Value="E/MALE Level 2 (new patient) - Completed , ">E/MALE Level 2 (new patient) - Completed , </Value>
+                      <Unmatched>and</Unmatched>
+                      <Value Value="ordered US Kidney , Abdominal X - Ray">ordered US Kidney , Abdominal X - Ray</Value>
+                    </content2>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2014-03-31T15:48:00Z</td>
+                  <td>
+                    <content ID="encounter-5">Walk-In</content>
+                  </td>
+                  <td>Ashely Decker </td>
+                  <td>Drew Medical Labs</td>
+                  <td>
+                    <content ID="encounter-note-5"></content>
+                    <content2 ID="encounter-note-5" xmlns=""></content2>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP/C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="HITSP/C83" />
+              <!--Encounter activity template-->
+              <id root="2.16.840.1.113883.4.450" extension="52889016051223400239" />
+              <code code="99202" displayName="E/M Level 2 (new patient)" codeSystemName="CPT" codeSystemVersion="4" codeSystem="2.16.840.1.113883.6.12">
+                <originalText>
+                  <reference value="#encounter-1" />
+                </originalText>
+                <translation code="AMB" displayName="Ambulatory" codeSystemName="ActEncounterCode" codeSystem="2.16.840.1.113883.5.4" />
+              </code>
+              <text>
+                <reference value="#encounter-note-1" />
+              </text>
+              <effectiveTime>
+                <low value="20130522204500" />
+                <high value="20130522204500" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <high value="20130522204500" />
+                </time>
+                <assignedEntity>
+                  <id extension="375741414" root="2.16.840.1.113883.4.450" />
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Brett</given>
+                      <family>Shepard</family>
+                      <suffix>MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id nullFlavor="UNK" />
+                    <name>Nancy E Falk MD</name>
+                    <telecom use="WP" value="tel:+1-716-664-0563" />
+                    <addr use="WP">
+                      <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                      <city>New Hampton</city>
+                      <state>NY</state>
+                      <postalCode>10958</postalCode>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP/C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="HITSP/C83" />
+              <!--Encounter activity template-->
+              <id root="2.16.840.1.113883.4.450" extension="20308733437171002890" />
+              <code code="AMB" displayName="Ambulatory" codeSystemName="ActEncounterCode" codeSystem="2.16.840.1.113883.5.4">
+                <originalText>
+                  <reference value="#encounter-2" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#encounter-note-2" />
+              </text>
+              <effectiveTime>
+                <low value="20130524205400" />
+                <high value="20130524205400" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <high value="20130524205400" />
+                </time>
+                <assignedEntity>
+                  <id extension="484989529" root="2.16.840.1.113883.4.450" />
+                  <addr use="WP">
+                    <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                    <city>Newburgh</city>
+                    <state>NY</state>
+                    <postalCode>12550</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-480-390-8153" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Ashely</given>
+                      <family>Decker</family>
+                      <suffix></suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id nullFlavor="UNK" />
+                    <name>Drew Medical Labs</name>
+                    <telecom use="WP" value="tel:+1-480-390-8153" />
+                    <addr use="WP">
+                      <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                      <city>Newburgh</city>
+                      <state>NY</state>
+                      <postalCode>12550</postalCode>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <addr use="WP">
+                    <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                    <city>Newburgh</city>
+                    <state>NY</state>
+                    <postalCode>12550</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-480-390-8153" use="WP" />
+                  <playingEntity>
+                    <name>Drew Medical Labs</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP/C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="HITSP/C83" />
+              <!--Encounter activity template-->
+              <id root="2.16.840.1.113883.4.450" extension="70840264016359898493" />
+              <code code="99212" displayName="E/M Level 2 (established patient)" codeSystemName="CPT" codeSystemVersion="4" codeSystem="2.16.840.1.113883.6.12">
+                <originalText>
+                  <reference value="#encounter-3" />
+                </originalText>
+                <translation code="AMB" displayName="Ambulatory" codeSystemName="ActEncounterCode" codeSystem="2.16.840.1.113883.5.4" />
+              </code>
+              <text>
+                <reference value="#encounter-note-3" />
+              </text>
+              <effectiveTime>
+                <low value="20140317193000" />
+                <high value="20140317193000" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <high value="20140317193000" />
+                </time>
+                <assignedEntity>
+                  <id extension="375741414" root="2.16.840.1.113883.4.450" />
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Brett</given>
+                      <family>Shepard</family>
+                      <suffix>MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id nullFlavor="UNK" />
+                    <name>Nancy E Falk MD</name>
+                    <telecom use="WP" value="tel:+1-716-664-0563" />
+                    <addr use="WP">
+                      <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                      <city>New Hampton</city>
+                      <state>NY</state>
+                      <postalCode>10958</postalCode>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP/C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="HITSP/C83" />
+              <!--Encounter activity template-->
+              <id root="2.16.840.1.113883.4.450" extension="23482636583818111684" />
+              <code code="99202" displayName="E/M Level 2 (new patient)" codeSystemName="CPT" codeSystemVersion="4" codeSystem="2.16.840.1.113883.6.12">
+                <originalText>
+                  <reference value="#encounter-4" />
+                </originalText>
+                <translation code="AMB" displayName="Ambulatory" codeSystemName="ActEncounterCode" codeSystem="2.16.840.1.113883.5.4" />
+              </code>
+              <text>
+                <reference value="#encounter-note-4" />
+              </text>
+              <effectiveTime>
+                <low value="20140325183000" />
+                <high value="20140325183000" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <high value="20140325183000" />
+                </time>
+                <assignedEntity>
+                  <id extension="469882126" root="2.16.840.1.113883.4.450" />
+                  <addr use="WP">
+                    <streetAddressLine>6978 Belduque Court</streetAddressLine>
+                    <city>Sparrow Bush</city>
+                    <state>NY</state>
+                    <postalCode>12780</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-724-274-4226" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Idola</given>
+                      <family>Maxwell</family>
+                      <suffix>MD</suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id nullFlavor="UNK" />
+                    <name>Kidney Center of Excellence</name>
+                    <telecom use="WP" value="tel:+1-724-274-4226" />
+                    <addr use="WP">
+                      <streetAddressLine>6978 Belduque Court</streetAddressLine>
+                      <city>Sparrow Bush</city>
+                      <state>NY</state>
+                      <postalCode>12780</postalCode>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <addr use="WP">
+                    <streetAddressLine>6978 Belduque Court</streetAddressLine>
+                    <city>Sparrow Bush</city>
+                    <state>NY</state>
+                    <postalCode>12780</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-724-274-4226" use="WP" />
+                  <playingEntity>
+                    <name>Kidney Center of Excellence</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+          <entry typeCode="DRIV">
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP/C83" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="HITSP/C83" />
+              <!--Encounter activity template-->
+              <id root="2.16.840.1.113883.4.450" extension="45230923057000242335" />
+              <code code="AMB" displayName="Ambulatory" codeSystemName="ActEncounterCode" codeSystem="2.16.840.1.113883.5.4">
+                <originalText>
+                  <reference value="#encounter-5" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#encounter-note-5" />
+              </text>
+              <effectiveTime>
+                <low value="20140331154800" />
+                <high value="20140331154800" />
+              </effectiveTime>
+              <performer typeCode="PRF">
+                <time>
+                  <high value="20140331154800" />
+                </time>
+                <assignedEntity>
+                  <id extension="484989529" root="2.16.840.1.113883.4.450" />
+                  <addr use="WP">
+                    <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                    <city>Newburgh</city>
+                    <state>NY</state>
+                    <postalCode>12550</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-480-390-8153" use="WP" />
+                  <assignedPerson>
+                    <realmCode code="US" />
+                    <name>
+                      <given>Ashely</given>
+                      <family>Decker</family>
+                      <suffix></suffix>
+                    </name>
+                  </assignedPerson>
+                  <representedOrganization>
+                    <id nullFlavor="UNK" />
+                    <name>Drew Medical Labs</name>
+                    <telecom use="WP" value="tel:+1-480-390-8153" />
+                    <addr use="WP">
+                      <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                      <city>Newburgh</city>
+                      <state>NY</state>
+                      <postalCode>12550</postalCode>
+                    </addr>
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <addr use="WP">
+                    <streetAddressLine>9037 Shadetree Circle</streetAddressLine>
+                    <city>Newburgh</city>
+                    <state>NY</state>
+                    <postalCode>12550</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-480-390-8153" use="WP" />
+                  <playingEntity>
+                    <name>Drew Medical Labs</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Plan of Care-->
+        <section>
+          <templateId root="2.16.840.1.113883.3.88.11.83.124" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.31" assigningAuthorityName="IHE PCC" />
+          <templateId root="2.16.840.1.113883.10.20.2.7" assigningAuthorityName="HL7 CCD" />
+          <templateId root="2.16.840.1.113883.10.20.1.10" assigningAuthorityName="HL7 CCD" />
+          <!--Plan of Care section template-->
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan" />
+          <title>Plan of Care</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Planned Activity</th>
+                  <th>Planned Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="plannedlab-1">Retrograde Pyelogram</content>
+                  </td>
+                  <td>2013-05-22T20:45:00Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="plannedlab-2">US Kidney</content>
+                  </td>
+                  <td>2014-03-25T18:30:00Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="plannedlab-3">Abdominal X-Ray</content>
+                  </td>
+                  <td>2014-03-25T18:30:00Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="planneddrug-1">Isotonic Saline (0.9%) - 150 cc/hr</content>
+                  </td>
+                  <td>2013-05-22T20:45:00Z</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <procedure classCode="OBS" moodCode="RQO">
+              <templateId root="2.16.840.1.113883.10.20.1.25" assigningAuthorityName="CCD" />
+              <!--Plan of Activity activity template-->
+              <id root="78CDDEA3-D89B-48E8-8B99-DE6CEAD0C688" />
+              <code code="38105-3" displayName="Retrograde Pyelogram" codeSystem="2.16.840.1.113883.6.103">
+                <originalText>
+                  <reference value="#plannedlab-1" />
+                </originalText>
+              </code>
+              <statusCode code="new" />
+              <effectiveTime>
+                <center value="20130522204500" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="OBS" moodCode="RQO">
+              <templateId root="2.16.840.1.113883.10.20.1.25" assigningAuthorityName="CCD" />
+              <!--Plan of Activity activity template-->
+              <id root="E19B1951-6532-4B11-8621-7820B89719A1" />
+              <code code="38036-0" displayName="US Kidney" codeSystem="2.16.840.1.113883.6.103">
+                <originalText>
+                  <reference value="#plannedlab-2" />
+                </originalText>
+              </code>
+              <statusCode code="new" />
+              <effectiveTime>
+                <center value="20140325183000" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry typeCode="DRIV">
+            <procedure classCode="OBS" moodCode="RQO">
+              <templateId root="2.16.840.1.113883.10.20.1.25" assigningAuthorityName="CCD" />
+              <!--Plan of Activity activity template-->
+              <id root="814EB1C2-855D-4905-835F-BE8BE89DF0DB" />
+              <code code="24799-9" displayName="Abdominal X-Ray" codeSystem="2.16.840.1.113883.6.103">
+                <originalText>
+                  <reference value="#plannedlab-3" />
+                </originalText>
+              </code>
+              <statusCode code="new" />
+              <effectiveTime>
+                <center value="20140325183000" />
+              </effectiveTime>
+            </procedure>
+          </entry>
+          <entry>
+            <substanceAdministration moodCode="INT" classCode="SBADM">
+              <templateId root="2.16.840.1.113883.3.88.11.83.8" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1" assigningAuthorityName="IHE PCC" />
+              <templateId root="2.16.840.1.113883.10.20.1.25" assigningAuthorityName="CCD" />
+              <id root="492B9514-ADB3-410A-8CBA-D2378B6165BD" />
+              <statusCode code="completed" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20130522204500" />
+                <high nullFlavor="UNK" />
+              </effectiveTime>
+              <doseQuantity value="150" unit="cc/hr" />
+              <consumable>
+                <manufacturedProduct>
+                  <templateId root="2.16.840.1.113883.3.88.11.83.8.2" assigningAuthorityName="HITSP C83" />
+                  <templateId root="2.16.840.1.113883.10.20.1.53" />
+                  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2" assigningAuthorityName="IHE PCC" />
+                  <manufacturedMaterial>
+                    <code code="00026440005" displayName="Isotonic Saline (0.9%)" codeSystemName="NDC" codeSystem="2.16.840.1.113883.6.69">
+                      <originalText>
+                        <reference value="#med-1" />
+                      </originalText>
+                    </code>
+                    <name>Isotonic Saline (0.9%)</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.3.88.11.83.8.1" />
+                  <code code="73639000" displayName="Prescription Drug" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </observation>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <!--Advance Directive Section-->
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.1.1" assigningAuthorityName="HL7 CCD" />
+          <templateId root="2.16.840.1.113883.3.88.11.83.116" assigningAuthorityName="HITSP/C83" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.35" assigningAuthorityName="IHE PCC" />
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.34" assigningAuthorityName="IHE PCC" />
+          <code code="42348-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+          <title>Advance Directives</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Directive</th>
+                  <th>Description</th>
+                  <th>Custodian</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CPR</td>
+                  <td>
+                    <content ID="AdvDir_1">Do not CPR</content>
+                  </td>
+                  <td>Nancy E Falk MD</td>
+                  <td>Current and verified</td>
+                </tr>
+                <tr>
+                  <td>Intubation</td>
+                  <td>
+                    <content ID="AdvDir_2">Do not Intubation</content>
+                  </td>
+                  <td>Nancy E Falk MD</td>
+                  <td>Supported By Durable Power of Attorney for Healthcare</td>
+                </tr>
+                <tr>
+                  <td>Antibiotics</td>
+                  <td>
+                    <content ID="AdvDir_3">Do Antibiotics</content>
+                  </td>
+                  <td>Nancy E Falk MD</td>
+                  <td>Supported By Healthcare Will</td>
+                </tr>
+                <tr>
+                  <td>Life Support</td>
+                  <td>
+                    <content ID="AdvDir_4">Do Life Support</content>
+                  </td>
+                  <td>Nancy E Falk MD</td>
+                  <td>Supported By Durable Power of Attorney for Healthcare</td>
+                </tr>
+                <tr>
+                  <td>IV Fluid and Support</td>
+                  <td>
+                    <content ID="AdvDir_5">Do not IV Fluid and Support</content>
+                  </td>
+                  <td>Nancy E Falk MD</td>
+                  <td>Current and verified</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.12" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.17" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.7" assigningAuthorityName="IHE PCC" />
+              <id root="03AEC5EE-177B-4ACD-8C9F-403ECC25654C" />
+              <!--Advance directive observation template-->
+              <code code="89666000" displayName="CPR" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                <originalText>
+                  <reference value="#AdvDir_1" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#AdvDir_1" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime nullFlavor="UNK">
+                <low nullFlavor="UNK" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <value xsi:type="BL" value="false" />
+              <participant typeCode="CST">
+                <participantRole classCode="AGNT">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.37" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="425392003" codeSystem="2.16.840.1.113883.6.96" displayName="Current and verified" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.12" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.17" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.7" assigningAuthorityName="IHE PCC" />
+              <id root="98618DE4-8660-4EC8-8508-7574CC11C348" />
+              <!--Advance directive observation template-->
+              <code code="52765003" displayName="Intubation" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                <originalText>
+                  <reference value="#AdvDir_2" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#AdvDir_2" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime nullFlavor="UNK">
+                <low nullFlavor="UNK" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <value xsi:type="BL" value="false" />
+              <participant typeCode="CST">
+                <participantRole classCode="AGNT">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.37" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="425393008" codeSystem="2.16.840.1.113883.6.96" displayName="Supported By Durable Power of Attorney for Healthcare" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.12" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.17" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.7" assigningAuthorityName="IHE PCC" />
+              <id root="96ED0675-C939-47BF-826E-1D10DED1517B" />
+              <!--Advance directive observation template-->
+              <code code="281789004" displayName="Antibiotics" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                <originalText>
+                  <reference value="#AdvDir_3" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#AdvDir_3" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime nullFlavor="UNK">
+                <low nullFlavor="UNK" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <value xsi:type="BL" value="true" />
+              <participant typeCode="CST">
+                <participantRole classCode="AGNT">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.37" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="425394002" codeSystem="2.16.840.1.113883.6.96" displayName="Supported By Healthcare Will" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.12" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.17" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.7" assigningAuthorityName="IHE PCC" />
+              <id root="FE1BA645-2CEE-47E6-8593-5822BD5B4CF5" />
+              <!--Advance directive observation template-->
+              <code code="78823007" displayName="Life Support" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                <originalText>
+                  <reference value="#AdvDir_4" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#AdvDir_4" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime nullFlavor="UNK">
+                <low nullFlavor="UNK" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <value xsi:type="BL" value="true" />
+              <participant typeCode="CST">
+                <participantRole classCode="AGNT">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.37" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="425393008" codeSystem="2.16.840.1.113883.6.96" displayName="Supported By Durable Power of Attorney for Healthcare" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry typeCode="DRIV">
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.3.88.11.83.12" assigningAuthorityName="HITSP C83" />
+              <templateId root="2.16.840.1.113883.10.20.1.17" assigningAuthorityName="CCD" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC" />
+              <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.7" assigningAuthorityName="IHE PCC" />
+              <id root="3552812E-874B-4C8B-8788-5E2A1DF87D61" />
+              <!--Advance directive observation template-->
+              <code code="225204009" displayName="IV Fluid and Support" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                <originalText>
+                  <reference value="#AdvDir_5" />
+                </originalText>
+              </code>
+              <text>
+                <reference value="#AdvDir_5" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime nullFlavor="UNK">
+                <low nullFlavor="UNK" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <value xsi:type="BL" value="false" />
+              <participant typeCode="CST">
+                <participantRole classCode="AGNT">
+                  <addr use="WP">
+                    <streetAddressLine>9540 Park Hills Circle</streetAddressLine>
+                    <city>New Hampton</city>
+                    <state>NY</state>
+                    <postalCode>10958</postalCode>
+                  </addr>
+                  <telecom value="tel:+1-716-664-0563" use="WP" />
+                  <playingEntity>
+                    <name>Nancy E Falk MD</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.1.37" />
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CE" code="425392003" codeSystem="2.16.840.1.113883.6.96" displayName="Current and verified" />
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

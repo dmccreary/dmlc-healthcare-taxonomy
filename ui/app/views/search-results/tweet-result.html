@@ -1,0 +1,10 @@
+<div>
+  <h4>
+    <i class="fa fa-twitter"></i>
+    <a>{{ tweet.content.user.name }} <em>(@{{ tweet.content.user.screen_name }})</em></a>
+  </h4>
+  <div ng-if="!tweet.content.enriched" class="meta">{{ tweet.content.text }}</div>
+  <div ng-if="tweet.content.enriched" class="meta">
+    <enriched content="tweet.content.enriched"></enriched>
+  </div>
+</div>

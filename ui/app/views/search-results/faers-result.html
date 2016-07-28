@@ -1,0 +1,16 @@
+<div>
+  <h4>
+    <i class="demo-icon icon-warningbottle"></i>
+    <a ng-href="/view/safetyrecord{{faers.uri}}" target="_self">
+      {{ getTitle(faers) }}
+    </a>
+  </h4>
+  <div class="meta" ng-if="faers.content.reportId">
+    <strong>ReportId:</strong>
+    <span class="meta-value">{{faers.content.reportId}}</span>
+  </div>
+  <div class="meta" ng-if="faers.content.reportId">
+    <strong>Reactions:</strong>
+    <span class="meta-value" ng-repeat="reaction in faers.content.reactions">{{reaction}}</span>
+  </div>
+</div>

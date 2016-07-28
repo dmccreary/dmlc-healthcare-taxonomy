@@ -1,0 +1,21 @@
+<h1>Medicare Part D 2013</h1>
+
+<table class="table claim-details">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(key, value) in ctrl.doc" ng-if="key !== 'type' && value.length !== 0">
+      <td class="key">{{key}}:</td>
+      <td class="value">
+        <span ng-if="!_.isArray(value)">{{value}}</span>
+        <ul ng-if="_.isArray(value)">
+          <li ng-repeat="v in value">- {{v}}</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</ul>

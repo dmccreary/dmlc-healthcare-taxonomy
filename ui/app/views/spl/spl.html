@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <strong>Drug details:</strong>
+  <!-- TODO: ?? {{ ctrl.doc.drug || ctrl.doc.partName || ctrl.doc.genericName }} -->
+  <span class="close-modal pull-right" ng-click="ctrl.close()">
+    <i class="fa fa-times"></i>
+  </span>
+</div>
+<div class="modal-body spl-popup">
+  <div ng-if="ctrl.doc !== 'Not Found'" compile="ctrl.doc"></div>
+  <div ng-if="ctrl.doc === 'Not Found'">
+    <h3>Drug Not Found</h3>
+  </div>
+</div>
+<!--
+  <div ng-if="ctrl.doc !== 'Not Found'">
+    <div>
+      <ul class="product-labels">
+        <li ng-repeat="label in ctrl.doc.productLabels">
+          <img ng-src="/v1/documents?format=binary&amp;uri={{label}}">
+        </li>
+      </ul>
+    </div>
+    <div class="span12">
+      <div class="drug">{{ctrl.doc.drug}}</div>
+      <div class="author">
+        <address>{{ctrl.doc.address1}}</address>
+        <address>{{ctrl.doc.address2}}</address>
+      </div>
+      <div>
+        <div>
+          <div>
+            <span class="text-info">Medicine Ingredients</span>
+          </div>
+          <div>
+            <div>
+              <div class="medicine">
+                <h4>{{ctrl.doc.partName}}</h4>
+                <div class="names">
+                  Generic: <span class="generic">{{ctrl.doc.genericName}}</span>
+                  <br/>
+                  Ingredients:
+                </div>
+                <div class="ingredient" ng-repeat="ingredient in ctrl.doc.ingredients">
+                  <span>{{ingredient}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span class="text-danger">Warnings &amp; Precautions</span>
+          </div>
+          <div>
+            <div class="textWarnings" ng-repeat="warning in ctrl.doc.warnings">
+              <p compile="warning"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+-->

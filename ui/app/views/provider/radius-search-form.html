@@ -1,0 +1,45 @@
+ <div class="row">
+ <form class="ml-search form-inline" role="search">
+
+  <div class="form-group col-sm-7">
+    <label style="display:block;">Search for</label>
+    <input ng-model="qtext" 
+           type="text" 
+           class="form-control" 
+           placeholder="provider details..." 
+           autocomplete="off"
+           typeahead="suggestion for suggestion in suggest({ val: $viewValue })" 
+           typeahead-template-url="/views/provider/synonym-tpl.html" 
+           typeahead-loading="loadingSuggestions" 
+           style="width: 100%"/>
+    <div style="margin-top:5px;">
+      <label style="display:inline-block;">Using Semantic Search</label>
+      <input ng-model="semantic" 
+             type="checkbox"
+             class="form-control" 
+             style="margin-top:0;height:22px;" />
+    </div>
+  </div>
+
+  <div class="form-group col-sm-1">
+    <label style="display: block">within</label>
+    <select ng-model="radius" class="form-control" ng-options="r.value as r.label for r in radiusOpts"></select>
+  </div>
+  <div class="form-group col-sm-1">
+    <label style="display: block">of zip</label>
+      <input ng-model="zip" class="form-control" style="width: 6em">
+  </div>
+  <div class="form-group col-sm-2" style="padding-top: 1.75em">
+    <button type="submit" class="btn btn-primary" ng-click="search({ qtext: qtext })">
+      Search
+    </button>
+    <button type="reset" class="btn btn-link" ng-show="qtext || zip" ng-click="clear()">
+      clear
+    </button>
+  </div>
+  <div class="form-group col-sm-1" style="padding-top: 1.75em">
+    <button class="btn btn-default" ng-click="reset()">reset</button>
+  </div>
+  <span ng-show="loadingSuggestions" class="glyphicon glyphicon-refresh"></span>
+</form>
+</div>

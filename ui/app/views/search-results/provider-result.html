@@ -1,0 +1,18 @@
+<div>
+  <h4>
+    <i class="gender-icon fa" ng-class="{'fa-group' : (provider.content.providerType === 'Organization'), 'fa-female' : (provider.content.gender === 'Female'), 'fa-male' : (provider.content.gender === 'Male')}"></i>
+    <a ng-href="/view/providers{{ provider.uri }}">{{ provider.content.name || provider.content.org }}</a>
+  </h4>
+  <div class="meta">
+    <span class="meta-value" ng-if="provider.content.gender">{{ provider.content.gender }}</span>
+    <span class="meta-value">{{ [provider.content.address['addr-line1'], provider.content.address.city, provider.content.address.state, provider.content.address.zip].join(', ') }}</span>
+  </div>
+  <div class="matches">
+    <div class="match" ng-repeat="match in provider.matches">
+      <span class="hit-label">{{ match.path | extractFieldName | capitalize }}</span>
+      <em ng-repeat="text in match['match-text'] track by $index">
+        <span ng-class="{ highlight: !!text.highlight }">{{ text.hasOwnProperty('highlight') ? text.highlight : text }}</span>
+      </em>
+    </div>
+  </div>
+</div>

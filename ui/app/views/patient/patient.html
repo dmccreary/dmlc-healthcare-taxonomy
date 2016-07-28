@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-md-3 col-xs-10">
+
+    <div class="panel panel-primary patient-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{patient.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <h4>Information</h4>
+        <ul class="facts">
+          <li class="fact">
+            <span class="fact-label">SSN:</span><span class="fact-value">{{patient.ssn}}</span>
+          </li>
+          <li class="fact">
+            <span class="fact-label">DOB:</span><span class="fact-value">{{patient.dob}}</span>
+          </li>
+          <li class="fact">
+            <span class="fact-label">Gender:</span><span class="fact-value">{{patient.gender}}</span>
+          </li>
+        </ul>
+
+        <h4>Address</h4>
+        <ul class="facts">
+          <li class="fact">{{patient.address.streetAddressLine}}</li>
+          <li class="fact">{{patient.address.city}}, {{patient.address.state}} {{patient.address.postalCode}}</li>
+        </ul>
+
+
+        <h4>Contact</h4>
+        <ul class="facts">
+          <li class="fact">
+            <span class="fact-label">phone:</span><span class="fact-value">{{patient.phone}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 col-xs-12 records">
+    <record-section title="Vital Signs" controller="pvc">
+      <record-section-links>
+        <record-section-link>
+          <a class="btn btn-default btn-xs" ng-click="controller.addVitals()"><i class="fa fa-plus"></i> Add Vitals</a>
+        </record-section-link>
+      </record-section-links>
+      <div class="row">
+        <info-chart data="patient.records.vitals.systolicBp" data2="patient.records.vitals.diastolicBp" controller-name="BpChartCtrl"></info-chart>
+        <info-chart data="patient.records.vitals.temperature" controller-name="TemperatureChartCtrl"></info-chart>
+      </div>
+      <div class="row">
+        <info-chart data="patient.records.vitals.heartRate" controller-name="HeartRateChartCtrl"></info-chart>
+        <info-chart data="patient.records.vitals.respiration" controller-name="RespirationChartCtrl"></info-chart>
+      </div>
+      <div class="row">
+        <info-chart data="patient.records.vitals.weight" controller-name="WeightChartCtrl"></info-chart>
+      </div>
+    </record-section>
+    <record-section title="Allergies" anchor="allergies">
+      <allergies-table data="patient.records.allergies"></allergies-table>
+    </record-section>
+    <record-section title="Medications" anchor="meds">
+      <medications-table data="patient.records.medications.values"></medications-table>
+    </record-section>
+    <record-section title="Lab Results" anchor="labs">
+      <labs-table data="patient.records.labs"></labs-table>
+    </record-section>
+    <record-section title="Immunizations" anchor="immunizations">
+      <immunizations-table data="patient.records.immunizations"></immunizations-table>
+    </record-section>
+    <record-section title="Encounters" anchor="encounters">
+      <div class="panel panel-default legend">
+        <div class="panel-heading">Legend</div>
+        <ul class="list-group">
+<!--
+          <li class="anatomicstructure list-group-item">Anatomic Structure</li>
+          <li class="weight list-group-item">Weight</li>
+          <li class="patient-age list-group-item">Patient Age</li>
+          <li class="height list-group-item">Height</li>
+          <li class="procedure list-group-item">Procedure</li>
+          <li class="systolicbp list-group-item">Systolic BP</li>
+          <li class="diastolicbp list-group-item">Diastolic BP</li>
+          <li class="respiration list-group-item">Respiration</li>
+          <li class="disease-or-finding list-group-item">Disease or Finding</li>
+          <li class="pulse list-group-item">Pulse</li>
+          <li class="medicine list-group-item">Medicine</li>
+          <li class="medicine-dose list-group-item">Medicine Dose</li>
+          <li class="medicine-frequency list-group-item">Medicine Frequency</li>
+          <li class="meddra-llt list-group-item">MedDRA</li>
+-->
+          <li class="soap-section list-group-item">Soap Section</li>
+          <li class="ethnicity list-group-item">Ethnicity</li>
+          <li class="gender list-group-item">Gender</li>
+          <li class="occupation list-group-item">Occupation</li>
+          <li class="age-unit-of-measure list-group-item">Age Unit of Measure</li>
+          <li class="vital-sign list-group-item">Vital Sign</li>
+          <li class="vital-sign-uom list-group-item">Vital Sign UOM</li>
+          <li class="disease list-group-item">Disease</li>
+          <li class="symptom list-group-item">Symptom</li>
+          <li class="drug list-group-item">Drug</li>
+          <li class="injury list-group-item">Injury</li>
+          <li class="qualifier list-group-item">Qualifier</li>
+          <li class="history list-group-item">History</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-default patient-encounter" ng-repeat="encounter in patient.records.encounters.values">
+        <div class="panel-heading">{{encounter.performer}} on {{pvc.encounterDate(encounter.date)}} at {{encounter.location}}</div>
+        <div class="panel-body">
+          <span ng-if="encounter.notes.length === 0">
+          No notes
+          </span>
+          <enriched ng-if="encounter.notes.length > 0" content="encounter.notes"></enriched>
+        </div>
+      </div>
+    </record-section>
+
+    <record-section title="Claims" anchor="claims">
+      <div ng-repeat="claim in patient.claims">
+        <claim-view doc="claim"></claim-view>
+      </div>
+    </record-section>
+  </div>
+</div>

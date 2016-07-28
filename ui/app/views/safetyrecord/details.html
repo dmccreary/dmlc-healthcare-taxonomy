@@ -1,0 +1,83 @@
+<div class="researcher">
+  <h3>Report: {{ctrl.doc.reportId}}</h3>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <dl>
+        <dt>Date received:</dt>
+        <dd>{{ctrl.doc.dateReceived}}</dd>
+        <dt>Summary</dt>
+        <dd>
+          <enriched content="ctrl.doc.whatHappened"></enriched>
+        </dd>
+        <dt>The following occurred:</dt>
+        <dd>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" disabled="disabled" ng-model="ctrl.doc.outcomes.hospitalization"> Hospitalization – admitted or stayed longer
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" disabled="disabled" ng-model="ctrl.doc.outcomes.disabilityHealthProblem"> Disability or health problem
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" disabled="disabled" ng-model="ctrl.doc.outcomes.birthDefect"> Birth defect
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" disabled="disabled" ng-model="ctrl.doc.outcomes.lifeThreatening"> Life-threatening event
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" disabled="disabled" ng-model="ctrl.doc.outcomes.death"> Death
+            </label>
+          </div>
+        </dd>
+        <dt>Patient information:</dt>
+        <dd>
+          <dl class="col-xs-offset-1">
+            <dt>Initials:</dt>
+            <dd>{{ctrl.doc.patient.initials}}</dd>
+            <dt>Gender:</dt>
+            <dd>{{ctrl.doc.patient.gender}}</dd>
+            <dt>Age:</dt>
+            <dd>{{ctrl.doc.patient.age}}</dd>
+          </dl>
+        </dd>
+        <dt>Reporter information:</dt>
+        <dd>
+          <dl class="col-xs-offset-1">
+            <dt>First name:</dt>
+            <dd>{{ctrl.doc.reporter.firstName}}</dd>
+            <dt>Last name:</dt>
+            <dd>{{ctrl.doc.reporter.lastName}}</dd>
+            <dt>Telephone number:</dt>
+            <dd>{{ctrl.doc.reporter.telephone}}</dd>
+            <dt>Fax number:</dt>
+            <dd>{{ctrl.doc.reporter.fax}}</dd>
+            <dt>Email:</dt>
+            <dd>{{ctrl.doc.reporter.email}}</dd>
+            <dt>Address:</dt>
+            <dd>
+              <address>
+                {{ctrl.doc.reporter.address.street}}<br>
+                {{ctrl.doc.reporter.address.city}} {{ctrl.doc.reporter.address.state}} {{ctrl.doc.reporter.address.zip}}<br>
+                {{ctrl.doc.reporter.address.country}}
+              </address>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+
+<!-- <h1>Safety Record: {{ctrl.doc.companynumb}}</h1>
+
+<json-explorer data="ctrl.doc"></json-explorer>
+ -->

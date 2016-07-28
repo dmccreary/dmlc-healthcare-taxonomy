@@ -1,0 +1,32 @@
+<h3>Find Patients</h3>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 search-input">
+    <ml-input qtext="ctrl.qtext" search="ctrl.search(qtext)"
+              suggest="ctrl.suggest(val)" save="ctrl.saveSearch()" template="fa"></ml-input>
+    <button class="btn btn-default" ng-click="ctrl.reset()">reset</button>
+  </div>
+</div>
+<div class="row">
+
+  <ml-facets class="col-md-3" facets="ctrl.response.facets" template="/views/researcher/facets.html" toggle="ctrl.toggleFacet(facet, value)" show-more="ctrl.showMoreFacets(facet, facetName)"></ml-facets>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-sm-6" ng-class="{ 'col-md-12': ctrl.hideMap, 'col-md-6': !ctrl.hideMap}">
+        <h3 ng-if="ctrl.response.total === 0">No results to show</h3>
+
+        <div ng-if="ctrl.response.total > 0" class="results">
+
+          <pagination ng-model="ctrl.page" ng-change="ctrl.search()" max-size="10" boundary-links="true"
+                      total-items="ctrl.response.total" items-per-page="ctrl.response['page-length']"></pagination>
+
+          <ml-metrics search="ctrl.response"></ml-metrics>
+          <patient-results results="ctrl.response.results"></patient-results>
+        </div>
+      </div>
+      <div class="col-md-6" id="mapresults" ng-hide="ctrl.hideMap ||  ctrl.response.total === 0">
+        <div style="width: 100%; height: 350px">
+          <google-map markers="ctrl.markers" options="ctrl.mapOptions" show-tools="true" current-polygon="ctrl.currentPolygon" class="map" fit="true"></google-map>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Manage Taxonomies</h1>
+    <div ng-show="loading">Loading taxonomy...<span><i class="fa fa-spinner fa-spin"></i></span></div>
+
+    <div ng-show="!loading">
+      <div ng-show="hasTaxonomy">
+        <p>The current taxonomy file: <b>{{taxonomyName}}</b></p>
+        <p>
+          <button class="btn btn-primary" ng-click="taxonomyCtrl.deleteTaxonomy()">Delete Taxonomy</button>
+        </p>
+      </div>
+
+      <div ng-show="!hasTaxonomy">
+        <p>No taxonomy found.</p>
+      </div>
+
+      <form ng-show="!hasTaxonomy" 
+            id="uploadTaxonomyForm" 
+            name="uploadTaxonomyForm" 
+            action="/taxonomy/upload" 
+            method="post" 
+            enctype="multipart/form-data" 
+            role="form" 
+            novalidate="novalidate">
+        <div class="form-group">
+          <div class="flex-wrapper" style="margin-top:2px;">
+            <div class="flex">
+              <div class="file-upload-note">{{note}}</div>
+            </div>
+            <div style="margin-left:20px;">
+              <div class="file-upload-button-wrapper btn btn-primary">
+                <span>Choose File</span>
+                <input type="file" name="taxonomy_file" 
+                       onchange="angular.element(this).scope().onFileSelected(this.files)" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" ng-click="uploadTaxonomy($event)" ng-show="showUploadButton">Upload</button>
+          <span ng-show="uploader.working"><i class="fa fa-spinner fa-spin"></i></span>
+        </div>
+      </form>
+
+      <div>
+        <p>{{message}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

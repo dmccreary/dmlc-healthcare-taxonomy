@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12 search-input">
+    <radius-search qtext="providerSearchCtrl.qtext" 
+                   zip="providerSearchCtrl.qzip" 
+                   radius="providerSearchCtrl.qradius" 
+                   semantic="providerSearchCtrl.qsemantic" 
+                   search="providerSearchCtrl.search(qtext)" 
+                   suggest="providerSearchCtrl.suggest(val)" 
+                   reset="providerSearchCtrl.reset()"></radius-search>
+  </div>
+</div>
+
+<div class="row">
+
+  <ml-facets class="col-md-3" facets="providerSearchCtrl.response.facets" template="/views/researcher/facets.html" toggle="providerSearchCtrl.toggleFacet(facet, value)" show-more="providerSearchCtrl.showMoreFacets(facet, facetName)"></ml-facets>
+  <div class="col-md-9 radius-search-results results">
+    <div class="row" ng-if="providerSearchCtrl.response.total > 0">
+      <div class="col-md-10"><pagination ng-model="providerSearchCtrl.page" ng-change="providerSearchCtrl.search()" max-size="10" boundary-links="true"
+                      total-items="providerSearchCtrl.response.total" items-per-page="providerSearchCtrl.response['page-length']"></pagination></div>
+                      <div class="col-md-2 text-right"><a ng-click="providerSearchCtrl.hideMap = !providerSearchCtrl.hideMap"><span ng-show="providerSearchCtrl.hideMap">&laquo; show</span><span ng-show="!providerSearchCtrl.hideMap">&raquo; hide</span> map</a></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" ng-class="{ 'col-md-12': providerSearchCtrl.hideMap, 'col-md-6': !providerSearchCtrl.hideMap}">
+        <h3 ng-if="providerSearchCtrl.response.total === 0">No results to show</h3>
+
+        <div ng-if="providerSearchCtrl.response.total > 0" class="results">
+          <ml-metrics search="providerSearchCtrl.response"></ml-metrics>
+          <ml-results template="/views/search-results/search-results.html" results="providerSearchCtrl.response.results"></ml-results>
+        </div>
+      </div>
+      <div class="col-md-6" id="mapresults" ng-hide="providerSearchCtrl.hideMap ||  providerSearchCtrl.response.total === 0">
+        <div style="width: 100%; height: 350px">
+          <google-map markers="providerSearchCtrl.markers" show-tools="true" options="providerSearchCtrl.mapOptions" current-polygon="providerSearchCtrl.currentPolygon" refresh="providerSearchCtrl.refreshMap()" class="map" fit="true"></google-map>
+        </div>
+      </div>
+  </div>
+</div>

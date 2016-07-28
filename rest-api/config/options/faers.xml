@@ -1,0 +1,324 @@
+<options xmlns="http://marklogic.com/appservices/search">
+  <search-option>unfiltered</search-option>
+  <page-length>10</page-length>
+  <additional-query>
+    <cts:collection-query xmlns:cts="http://marklogic.com/cts">
+      <cts:uri>faers</cts:uri>
+      <cts:uri>diabetes</cts:uri>
+      <cts:uri>spl</cts:uri>
+      <cts:uri>patient</cts:uri>
+      <cts:uri>literature</cts:uri>
+      <cts:uri>news</cts:uri>
+      <cts:uri>tweets</cts:uri>
+      <cts:uri>claim</cts:uri>
+    </cts:collection-query>
+  </additional-query>
+  <term apply="term">
+    <empty apply="all-results"/>
+    <term-option>punctuation-insensitive</term-option>
+    <term-option>stemmed</term-option>
+  </term>
+  <grammar>
+    <quotation>"</quotation>
+    <implicit>
+      <cts:and-query strength="20" xmlns:cts="http://marklogic.com/cts"/>
+    </implicit>
+    <starter strength="30" apply="grouping" delimiter=")">(</starter>
+    <starter strength="40" apply="prefix" element="cts:not-query">-</starter>
+    <joiner strength="10" apply="infix" element="cts:or-query" tokenize="word">OR</joiner>
+    <joiner strength="20" apply="infix" element="cts:and-query" tokenize="word">AND</joiner>
+    <joiner strength="30" apply="infix" element="cts:near-query" tokenize="word">NEAR</joiner>
+    <joiner strength="30" apply="near2" consume="2" element="cts:near-query">NEAR/</joiner>
+    <joiner strength="50" apply="constraint">:</joiner>
+    <joiner strength="50" apply="constraint" compare="LT" tokenize="word">LT</joiner>
+    <joiner strength="50" apply="constraint" compare="LE" tokenize="word">LE</joiner>
+    <joiner strength="50" apply="constraint" compare="GT" tokenize="word">GT</joiner>
+    <joiner strength="50" apply="constraint" compare="GE" tokenize="word">GE</joiner>
+    <joiner strength="50" apply="constraint" compare="NE" tokenize="word">NE</joiner>
+  </grammar>
+  <sort-order direction="descending">
+    <score/>
+  </sort-order>
+  <transform-results apply="none">
+    <preferred-elements><element ns="" name="body"/></preferred-elements>
+    <max-matches>1</max-matches>
+    <max-snippet-chars>150</max-snippet-chars>
+    <per-match-tokens>20</per-match-tokens>
+  </transform-results>
+  <return-query>1</return-query>
+  <operator name="results">
+    <state name="compact">
+      <transform-results apply="snippet">
+        <preferred-elements><element ns="" name="body"/></preferred-elements>
+        <max-matches>1</max-matches>
+        <max-snippet-chars>150</max-snippet-chars>
+        <per-match-tokens>20</per-match-tokens>
+      </transform-results>
+    </state>
+    <state name="detailed">
+      <transform-results apply="snippet">
+        <preferred-elements><element ns="" name="body"/></preferred-elements>
+        <max-matches>2</max-matches>
+        <max-snippet-chars>400</max-snippet-chars>
+        <per-match-tokens>30</per-match-tokens>
+      </transform-results>
+    </state>
+  </operator>
+  <annotation xmlns="http://marklogic.com/appservices/search">Delta options here</annotation>
+
+  <constraint name="DocumentType">
+    <collection prefix=""/>
+  </constraint>
+
+  <constraint name="Product">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="drug-name"/>
+    </range>
+  </constraint>
+
+  <constraint name="DrugClass">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="drug-class"/>
+    </range>
+  </constraint>
+
+  <constraint name="Manufacturer">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="manufacturer"/>
+    </range>
+  </constraint>
+
+  <constraint name="Ingredient">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="ingredient"/>
+    </range>
+  </constraint>
+
+  <constraint name="NationalDrugCode">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="ndc"/>
+    </range>
+  </constraint>
+
+  <constraint name="ReportDate">
+    <range type="xs:dateTime" facet="true">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="report-date"/>
+    </range>
+  </constraint>
+
+  <constraint name="Reaction">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="reaction"/>
+    </range>
+  </constraint>
+
+  <constraint name="Outcome">
+    <range type="xs:string" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>descending</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <!-- <facet-option>limit=10</facet-option> -->
+      <element ns="http://fda.gov/ns/faers" name="outcome"/>
+    </range>
+  </constraint>
+
+  <constraint name="PatientAge">
+    <range type="xs:int" facet="true">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="patient-age"/>
+      <bucket name="Adolescent" ge="0" lt="19">Adolescent</bucket>
+      <bucket name="Adult" ge="19">Adult</bucket>
+    </range>
+  </constraint>
+
+  <constraint name="PatientGender">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="http://fda.gov/ns/faers" name="gender"/>
+    </range>
+  </constraint>
+
+  <constraint name="Form">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="drugdosageform"/>
+      <attribute ns="" name="normalized"/>
+    </range>
+  </constraint>
+
+  <constraint name="Serious">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="serious"/>
+    </range>
+  </constraint>
+
+  <constraint name="Source">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="reporterorganization"/>
+    </range>
+  </constraint>
+
+<!-- spl -->
+  <constraint name="ActiveIngredients">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:document//hl7:activeIngredient/hl7:activeIngredientSubstance/hl7:name</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="InactiveIngredients">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=10</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:document//hl7:inactiveIngredient/hl7:inactiveIngredientSubstance/hl7:name</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="Problems">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:act/hl7:entryRelationship/hl7:observation/hl7:value/hl7:translation[@codeSystemName="ICD9"]/@displayName</path-index>
+    </range>
+  </constraint>
+  <constraint name="Medications">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:substanceAdministration/hl7:consumable/hl7:manufacturedProduct/hl7:manufacturedMaterial/hl7:code[@codeSystemName="NDC"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="MedicalProcedures">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:code[@codeSystem="2.16.840.1.113883.6.1"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="FamilyHistory">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation/hl7:code[@codeSystem="2.16.840.1.113883.6.96"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="MaritalStatus">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:maritalStatusCode[@codeSystem="2.16.840.1.113883.5.2"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="Race">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:raceCode[@codeSystem="2.16.840.1.113883.6.238"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <constraint name="Gender">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <path-index xmlns:hl7="urn:hl7-org:v3">/hl7:ClinicalDocument//hl7:administrativeGenderCode[@codeSystem="2.16.840.1.113883.5.1"]/@displayName</path-index>
+    </range>
+  </constraint>
+
+  <!-- FAERS constraints -->
+
+  <constraint name="Age">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="age"/>
+    </range>
+  </constraint>
+
+  <constraint name="FAERSGender">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="gender"/>
+    </range>
+  </constraint>
+
+  <constraint name="FAERSRace">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="race"/>
+    </range>
+  </constraint>
+
+  <constraint name="Readmitted">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <element ns="" name="readmitted"/>
+    </range>
+  </constraint>
+
+  <constraint name="Diagnosis">
+    <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
+      <facet-option>limit=5</facet-option>
+      <facet-option>frequency-order</facet-option>
+      <facet-option>descending</facet-option>
+      <field name="diagnosis"/>
+    </range>
+  </constraint>
+
+  <extract-metadata>
+    <constraint-value ref="DocumentType"/>
+  </extract-metadata>
+</options>

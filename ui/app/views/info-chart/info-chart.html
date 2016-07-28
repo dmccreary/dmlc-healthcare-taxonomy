@@ -1,0 +1,26 @@
+<div class="chart-container col-md-6">
+  <div class="chart" style="height: 400px" ng-show="ctrl.showChart"></div>
+  <div class="vital-table" ng-show="ctrl.showChart === false">
+    <h5 class="table-title">{{ctrl.title}}</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="point in data | orderBy:'date'">
+          <td>{{point.date | date:'mediumDate'}}</td>
+          <td>{{point.value}} {{point.units}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chart-links" ng-click="ctrl.showChart = !ctrl.showChart" ng-init="ctrl.showChart = true">
+    <a class="btn btn-default btn-xs chart-link" ng-class="{true: 'active', false: ''}[ctrl.showChart === false]">
+      <i class="fa fa-table"></i></a>
+    <a class="btn btn-default btn-xs chart-link" ng-class="{true: 'active', false: ''}[ctrl.showChart]">
+      <i class="fa fa-bar-chart-o"></i></a>
+  </div>
+</div>

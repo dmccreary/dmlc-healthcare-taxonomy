@@ -1,0 +1,112 @@
+<div class="col-xs-12 widget">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{widget.label}}
+        <div class="pull-right results-header">
+          <span ng-if="editing"><label>Limit</label><input class="form-control" ng-model="widget.resultLimit" ng-change="updateOutput()"></input></span>
+          <select ng-if="editing" class="form-control" ng-model="widget.size">
+            <option ng-repeat="ms in model.sizes">{{ms}}</option>
+          </select>
+          <select ng-if="editing" class="form-control" ng-model="widget.outputType">
+            <option ng-repeat="type in model.outputTypes">{{type}}</option>
+          </select>
+          <i ng-click="editing = !editing" class="fa fa-edit"></i>
+          <i ng-click="removeWidget()" class="fa fa-times"></i>
+        </div>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="editing" ng-if="editing">
+        <div class="options">
+          <!-- widget title -->
+          <collapsible-section title="Label">
+            <input class="form-control" ng-model="widget.label"/>
+          </collapsible-section>
+          <hr/>
+
+          <!-- dimensions -->
+          <collapsible-section title="Dimensions">
+            <span class="dimension" ng-repeat="dimension in widget.dimensions">
+
+              <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" dropdown-toggle>
+                  {{dimension.prettyName || 'Choose Dimension'}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="section">All</li>
+                  <li ng-repeat="constraint in constraints | filter:'All_'"><a href ng-click="selectDimension($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Providers</li>
+                  <li ng-repeat="constraint in constraints | filter:'Provider_'"><a href ng-click="selectDimension($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Patients</li>
+                  <li ng-repeat="constraint in constraints | filter:'Patient_'"><a href ng-click="selectDimension($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Claims</li>
+                  <li ng-repeat="constraint in constraints | filter:'Claim_'"><a href ng-click="selectDimension($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                </ul>
+              </div>
+              <i ng-click="removeDimension($index)" class="fa fa-times-circle"></i>
+            </span>
+            <button ng-click="addDimension()" class="btn btn-sm btn-default">Add <i class="fa fa-plus"></i></button>
+          </collapsible-section>
+          <hr/>
+
+          <!-- constraints -->
+          <collapsible-section title="Constraints">
+            <span class="dimension" ng-repeat="constraint in widget.activeConstraints">
+              <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" dropdown-toggle>
+                  {{constraint.constraint.prettyName || 'Choose Constraint'}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="section">All</li>
+                  <li ng-repeat="constraint in constraints | filter:'All_'"><a href ng-click="selectConstraint($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Providers</li>
+                  <li ng-repeat="constraint in constraints | filter:'Provider_'"><a href ng-click="selectConstraint($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Patients</li>
+                  <li ng-repeat="constraint in constraints | filter:'Patient_'"><a href ng-click="selectConstraint($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                  <li class="divider"></li>
+                  <li class="section">Claims</li>
+                  <li ng-repeat="constraint in constraints | filter:'Claim_'"><a href ng-click="selectConstraint($parent.$index, constraint)">{{constraint.extraPrettyName}}</a></li>
+                </ul>
+              </div>
+              =
+              <input type="text"
+                ng-model="widget.activeConstraints[$index].value"
+                typeahead-on-select="onSelectConstraint($item, $model, $label)"
+                typeahead="suggestion for suggestion in suggest(widget.activeConstraints[$index].constraint, $viewValue)" typeahead-loading="loadingSuggestions"></input>
+              <i ng-click="removeConstraint($index)" class="fa fa-times-circle"></i>
+            </span>
+            <button ng-click="addConstraint()" class="btn btn-sm btn-default">Add <i class="fa fa-plus"></i></button>
+          </collapsible-section>
+          <hr/>
+
+          <!-- Free text search -->
+          <collapsible-section title="Search">
+            <input class="form-control" ng-model="widget.query" ng-change="updateOutput()"/>
+          </collapsible-section>
+        </div>
+      </div>
+      <table class="table" ng-if="widget.outputType === 'Table'">
+        <thead>
+          <tr>
+            <th ng-repeat="dim in widget.dimensions track by $index" ng-if="dim.name">{{dim.name}}</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="tuple in model.tuples">
+            <td ng-repeat="dim in widget.dimensions track by $index" ng-if="dim.name">{{tuple['distinct-value'][$index]._value}}</td>
+            <td>{{tuple.frequency}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <chart ng-if="widget.outputType === 'Chart'" data="model.tuples" labels="widget.dimensions" controller-name="DashChartCtrl" height="400px"></chart>
+      <google-map ng-if="widget.outputType === 'Map'" markers="model.markers" options="model.mapOptions" class="map" fit="true"></google-map>
+    </div>
+  </div>
+  </div>
+</div>

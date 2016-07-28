@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<role xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://pragmaticdata.com/xforms">
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCOLOR" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="color"/>
+			<value code="C48325" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="white" xsi:type="CE" p:valueSet="SPL_COLOR"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLSHAPE" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="shape"/>
+			<value code="C48336" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="capsule" xsi:type="CE" p:valueSet="SPL_SHAPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLSIZE" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="size (solid drugs)"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLSCORE" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="scoring"/>
+			<value value="" xsi:type="INT"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLIMPRINT" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="imprint"/>
+			<value xsi:type="ST"></value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLFLAVOR" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="flavor"/>
+			<value code="C73391" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="grape" xsi:type="CE" p:valueSet="FLAVOR"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLIMAGE" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="image"/>
+			<value xsi:type="ED" mediaType="image/jpeg">
+				<reference value="" p:label="File Name"/> 
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="NCPDPBILLINGUNIT" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="NCPDP billing unit"/>
+			<value code="" codeSystem="2.16.840.1.113883.2.13" xsi:type="CE" p:valueSet="NCPDP_BILLING_UNIT"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+		  <code code="SPLPRODUCTIONAMOUNT" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Number of Units"/>
+		  <value xsi:type="INT" value=""/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C112160" displayName="Type 0: Not a Combination Product" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102834" displayName="Type 1: Convenience Kit of Co-Package" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102835" displayName="Type 2: Prefilled Drug Delivery Device/System (syringe, patch, etc.)" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102836" displayName="Type 3: Prefilled Biologic Delivery Device/System (syringe, patch, etc.)" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102837" displayName="Type 4: Device Coated/Impregnated/Otherwise Combined with Drug" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102838" displayName="Type 5: Device Coated or Otherwise Combined with Biologic" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102839" displayName="Type 6: Drug/Biologic Combination" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102840" displayName="Type 7: Separate Products Requiring Cross Labeling" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102841" displayName="Type 8: Possible Combination Based on Cross Labeling of Separate Products (Temporary Type)" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLCMBPRDTP" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="Combination Product Type"/>
+			<value code="C102842" displayName="Type 9: Other Type of Part 3 Combination Product (e.g., Drug/Device/Biological Product)" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="COMBINATION_PRODUCT_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLSIZETXT" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="size (text)"/>
+			<value xsi:type="ST"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9998-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="length"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9997-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="width"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9996-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="depth"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9999-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="greatest diameter"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9995-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="second greatest diameter"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9994-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="third greatest diameter"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9993-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="circumference"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9992-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="outer diameter"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9991-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="inner diameter"/>
+			<value unit="mm" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9990-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="volume"/>
+			<value unit="mL" value="" xsi:type="PQ"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLPRDCTLSN" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="product control by serial number"/>
+			<value value="true" xsi:type="BL"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLPRDCTLLN" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="product control by lot number"/>
+			<value value="true" xsi:type="BL"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLPRDCTLMD" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="product control by manufacturing date"/>
+			<value value="true" xsi:type="BL"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLPRDCTLED" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="product control by expiration date"/>
+			<value value="true" xsi:type="BL"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLUSE" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="number of times usable"/>
+			<value xsi:type="INT" value="1"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLMRICOMPAT" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="MRI compatibility"/>
+			<text/>
+			<value code="" displayName="" codeSystem="2.16.840.1.113883.3.26.1.1" xsi:type="CE" p:valueSet="MRI_COMPATIBILITY"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X9952-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="power requirement, type"/>
+			<value code="" codeSystem="2.16.840.1.113883.3.26.1.1" displayName="" xsi:type="CE" p:valueSet="POWER_TYPE"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9951-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="power requirement, voltage rating"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="V"/>
+				<high value="" unit="V"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="X9953-4" codeSystem="2.16.840.1.113883.6.1" p:displayName="power requirement, current rating"/>
+			<value xsi:type="PQ" unit="A"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X998-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="storage temperature"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="Cel" p:unit="&#176;C"/>
+				<high value="" unit="Cel" p:unit="&#176;C"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X997-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="storage relative humidity"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="%"/>
+				<high value="" unit="%"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X996-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="storage atmospheric pressure"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="hPa"/>
+				<high value="" unit="hPa"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X1998-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="operating temperature"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="Cel" p:unit="&#176;C"/>
+				<high value="" unit="Cel" p:unit="&#176;C"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X1997-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="operating relative humidity"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="%"/>
+				<high value="" unit="%"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<!-- this should be in criterion mood, not an event -->
+			<code code="X1996-3" codeSystem="2.16.840.1.113883.6.1" p:displayName="operating atmospheric pressure"/>
+			<value xsi:type="IVL_PQ">
+				<low value="" unit="hPa"/>
+				<high value="" unit="hPa"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLNOSUN" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="avoid direct sunlight"/>
+			<value xsi:type="BL" value="true"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code code="SPLPRDLINK" codeSystem="2.16.840.1.113883.1.11.19255" p:displayName="product web link"/>
+			<value xsi:type="ED" mediaType="image/jpeg">
+				<reference value="" p:label="URL"/> 
+			</value>
+		</characteristic>
+	</subjectOf>
+
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Serving size" code="101.9(b)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value unit="g" value="" xsi:type="PQ">
+				<translation value="1" code="cup" codeSystem="2.16.840.1.113883.3.149.3" p:valueSet="HOUSEHOLD_MEASURE"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Caloric content, total" code="101.9(c)(1)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="" unit="[Cal]">
+				<translation value="" code="kJ" codeSystem="2.16.840.1.113883.6.8"/>
+			</value>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Caloric content derived from total fat" code="101.9(c)(1)(ii)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="" unit="[Cal]"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Caloric content derived from saturated fat" code="101.9(c)(1)(iii)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="" unit="[Cal]"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Fatty acid mass content, total" code="101.9(c)(2)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="65" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Fatty acid, saturated, mass content" code="101.9(c)(2)(i)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="20" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Fatty acid, trans-, mass content" code="101.9(c)(2)(ii)" codeSystem="2.16.840.1.113883.3.149.2"/>		
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Fat mass content, polyunsaturated " code="101.9(c)(2)(iii)" codeSystem="2.16.840.1.113883.3.149.2"/>		
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Fat mass content, monounsaturated " code="101.9(c)(2)(iv)" codeSystem="2.16.840.1.113883.3.149.2"/>		
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Cholesterol mass content" code="101.9(c)(3)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="300" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Sodium mass content" code="101.9(c)(4)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="2400" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Potassium mass content" code="101.9(c)(5)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="3500" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Carbohydrate, total, mass content" code="101.9(c)(6)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="300" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Dietary fiber mass content" code="101.9(c)(6)(i)" codeSystem="2.16.840.1.113883.3.149.2"/>	
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Soluble fiber mass content" code="101.9(c)(6)(i)(A)" codeSystem="2.16.840.1.113883.3.149.2"/>	
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Insoluble fiber mass content" code="101.9(c)(6)(i)(B)" codeSystem="2.16.840.1.113883.3.149.2"/>			
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Sugars mass content" code="101.9(c)(6)(ii)" codeSystem="2.16.840.1.113883.3.149.2"/>	
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Sugar alcohol mass content" code="101.9(c)(6)(iii)" codeSystem="2.16.840.1.113883.3.149.2"/>		
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Other carbohydrates mass content" code="101.9(c)(6)(iv)" codeSystem="2.16.840.1.113883.3.149.2"/>		
+			<value xsi:type="PQ" value="" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Protein mass content" code="101.9(c)(7)" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="50" unit="g"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin A arbitrary content" code="101.9(c)(8)-1" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="5000" unit="[iU]"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin C mass content" code="101.9(c)(8)-2" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="60" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Calcium mass content" code="101.9(c)(8)-3" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="1000" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Iron mass content" code="101.9(c)(8)-4" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="18" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin D arbitrary content" code="101.9(c)(8)-5" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="400" unit="[iU]"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin E arbitrary content" code="101.9(c)(8)-6" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="30" unit="[iU]"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin K mass content" code="101.9(c)(8)-7" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="80" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Thiamin mass content" code="101.9(c)(8)-8" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="1.5" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Riboflavin mass content" code="101.9(c)(8)-9" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="1.7" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Niacin mass content" code="101.9(c)(8)-10" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="20" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin B6 mass content" code="101.9(c)(8)-11" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="2.0" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Folate mass content" code="101.9(c)(8)-12" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="400" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Vitamin B12 mass content" code="101.9(c)(8)-13" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="6" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Biotin mass content" code="101.9(c)(8)-14" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="300" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Pantothenic acid mass content" code="101.9(c)(8)-15" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="10" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Phosphorus mass content" code="101.9(c)(8)-16" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="1000" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Iodine mass content" code="101.9(c)(8)-17" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="150" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Magnesium mass content" code="101.9(c)(8)-18" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="400" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Zinc mass content" code="101.9(c)(8)-19" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="15" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Selenium mass content" code="101.9(c)(8)-20" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="70" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Copper mass content" code="101.9(c)(8)-21" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="2.0" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Manganese mass content" code="101.9(c)(8)-22" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="2.0" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Chromium mass content" code="101.9(c)(8)-23" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="120" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Molybdenum mass content" code="101.9(c)(8)-24" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="75" unit="ug"/>
+		</characteristic>
+	</subjectOf>
+	<subjectOf>
+		<characteristic>
+			<code p:displayName="Chloride mass content" code="101.9(c)(8)-25" codeSystem="2.16.840.1.113883.3.149.2"/>
+			<value xsi:type="PQ" value="3400" unit="mg"/>
+		</characteristic>
+	</subjectOf>
+</role>

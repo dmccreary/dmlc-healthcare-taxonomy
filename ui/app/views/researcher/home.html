@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-11 col-md-offset-1 search-input">
+    <ml-input qtext="researcherCtrl.qtext" search="researcherCtrl.search(qtext)"
+              suggest="researcherCtrl.suggest(val)" save="researcherCtrl.saveSearch()" template="fa"></ml-input>
+    <div style="display:inline-block" class="dropdown" dropdown>
+      <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle>
+        <i class="fa fa-save"></i> Saved Searches <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="search in researcherCtrl.savedSearches">
+          <a class="saved-search" ng-click="researcherCtrl.runSearch(search)">{{search.name}}<span class="pull-right" ng-click="researcherCtrl.deleteSearch(search); $event.stopPropagation()"><i class="fa fa-trash-o"></i></span></a>
+        </li>
+        <li ng-if="!researcherCtrl.savedSearches || researcherCtrl.savedSearches.length === 0"><a>No Saved Searches</a></li>
+      </ul>
+    </div>
+    <button class="btn btn-default" ng-click="researcherCtrl.reset()">reset</button>
+    <span ng-show="researcherCtrl.searchPending" class="search-spinner">
+      <i class="fa-lg fa fa-refresh fa-spin"></i>
+    </span>
+    <form>
+      <label class="checkbox-inline">
+        <input type="checkbox" ng-model="shouldResolveBrands">
+        Include brand/generic equivalents
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" ng-model="shouldResolveDrugClasses">
+        Include all drugs in the same class
+      </label>
+    </form>
+  </div>
+</div>
+<div class="row">
+
+  <ml-facets class="col-md-3" facets="researcherCtrl.response.facets" template="/views/researcher/facets.html" toggle="researcherCtrl.toggleFacet(facet, value)" show-more="researcherCtrl.showMoreFacets(facet, facetName)"></ml-facets>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 ng-if="researcherCtrl.response.total === 0">No results to show</h3>
+
+        <div ng-if="researcherCtrl.response.total > 0" class="results">
+
+          <pagination ng-model="researcherCtrl.page" ng-change="researcherCtrl.search()" max-size="10" boundary-links="true"
+                      total-items="researcherCtrl.response.total" items-per-page="researcherCtrl.response['page-length']"></pagination>
+
+          <ml-metrics search="researcherCtrl.response"></ml-metrics>
+          <div class="well well-sm" ng-if="researcherCtrl.expandedQtext">
+            <div>Your query was expanded to include additional drug names, based on triple data.</div>
+            <button class="btn btn-default btn-sm" type="button"  ng-click="isExpandedQueryCollapsed = !isExpandedQueryCollapsed">
+              See expanded query
+            </button>
+            <div collapse="isExpandedQueryCollapsed" ng-init="isExpandedQueryCollapsed = true" class="well well-sm">
+              {{researcherCtrl.expandedQtext}}
+            </div>
+          </div>
+          <ml-results template="/views/search-results/search-results.html" results="researcherCtrl.response.results"></ml-results>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<a ng-click="selectMatch($index)">
+  <div>
+    <span ng-show="match.model.show"><strong>{{match.model.concept}}</strong> - </span>
+    <span bind-html-unsafe="match.model.synonym | typeaheadHighlight:query"></span>       
+  </div>
+</a>

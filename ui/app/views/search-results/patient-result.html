@@ -1,0 +1,17 @@
+<div>
+  <h4>
+    <i class="gender-icon fa" ng-class="{true: 'fa-female', false: 'fa-male'}[patient.content.gender === 'Female']"></i>
+    <a ng-href="/view/patients{{ patient.uri }}">{{ patient.content.name }}</a>
+  </h4>
+  <div class="meta">
+    <span class="meta-value" ng-repeat="x in ['gender', 'race', 'dob']">{{ patient.content[x] }}</span>
+  </div>
+  <div class="matches">
+    <div class="match" ng-repeat="match in patient.matches">
+      <span class="hit-label">{{ match.path | extractFieldName | capitalize }}</span>
+      <em ng-repeat="text in match['match-text'] track by $index">
+        <span ng-class="{ highlight: !!text.highlight }">{{ text.hasOwnProperty('highlight') ? text.highlight : text }}</span>
+      </em>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div>
+  <h4>
+    <span ng-if="claim.claimType === 'Rx'" style="font-size: 28px; color: #666">&#8478;</span>
+    <img ng-if="claim.claimType !== 'Rx'" ng-src="/images/{{claim.content.claimType.toLowerCase()}}.png" style="width: 24px;"/>
+    <a ng-href="/view/claims{{ claim.uri }}">{{ claim.content.drugName || claim.content.procedures.join(', ') || claim.content.diagnoses.join(',')}}</a>
+  </h4>
+  <div class="meta">
+    <span ng-if="claim.content.claimType === 'Rx'" class="meta-value">{{ claim.content.daysSupply }} days supply</span>
+    <span ng-if="claim.content.claimType === 'Rx'" class="meta-value">{{ claim.content.rxServiceDate }} days supply</span>
+    <span ng-if="claim.content.claimType !== 'Rx'" class="meta-value">${{ claim.content.paymentAmount }} payment amount</span>
+    <span ng-if="claim.content.claimType !== 'Rx'" class="meta-value">{{ claim.content.from }} to {{claim.content.to}}</span>
+  </div>
+  <div class="matches">
+    <div class="match" ng-repeat="match in claim.matches">
+      <span class="hit-label">{{ match.path | extractFieldName | capitalize }}</span>
+      <em ng-repeat="text in match['match-text'] track by $index">
+        <span ng-class="{ highlight: !!text.highlight }">{{ text.hasOwnProperty('highlight') ? text.highlight : text }}</span>
+      </em>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div ng-repeat="result in results" class="result">
+  <claim-result claim="result" ng-if="result.type === 'claim'"></claim-result>
+  <medicare-typed-result result="result" ng-if="result.type === 'Medicare D'"></medicare-typed-result>
+  <provider-result provider="result" ng-if="result.type === 'provider'"></provider-result>
+  <faers-result faers="result" ng-if="result.type === 'faers'"></faers-result>
+  <spl-result spl="result" ng-if="result.type === 'spl'"></spl-result>
+  <literature-result literature="result" ng-if="result.type === 'literature'"></literature-result>
+  <news-result news="result" ng-if="result.type === 'news'"></news-result>
+  <diabetes-result diabetes="result" ng-if="result.type === 'diabetes'"></diabetes-result>
+  <tweet-result tweet="result" ng-if="result.type === 'tweets'"></tweet-result>
+  <patient-result patient="result" ng-if="result.type === 'patient'"></patient-result>
+  <hr/>
+</div>

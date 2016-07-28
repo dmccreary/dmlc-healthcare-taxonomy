@@ -1,0 +1,33 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand"><b style="color: white">DMLC</b> Healthcare</div>
+    </div>
+    <div class="collapse navbar-collapse" id="nav-menu">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: ctrl.isActive('/')}"><a href="/">Sources</a></li>
+        <li ng-class="{ active: ctrl.isActive('/login')}" ng-if="!ctrl.user.username"><a href="/login">Login</a></li>
+        <li ng-class="{ active: ctrl.isActive('/' + ctrl.user.role + '/')}" ng-if="ctrl.user.role"><a ng-href="/{{ctrl.user.role}}/">{{ctrl.user.role | capitalize}}</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right hide-on-collapse" ng-if="ctrl.user && ctrl.user.username">
+        <li ng-class="{ active: ctrl.isActive('/')}"><a href="/taxonomy">Taxonomy</a></li>
+        <li class="dropdown"  dropdown>
+          <a href="#" class="dropdown-toggle" dropdown-toggle>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="username">{{ctrl.user.fullname}}</span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" ng-click="ctrl.logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

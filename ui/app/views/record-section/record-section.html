@@ -1,0 +1,9 @@
+<div class="record-header">
+  <a class="anchor" id="{{anchor}}"></a>
+  <h4>{{title}}</h4>
+  <ul ng-if="links" class="record-links">
+    <li ng-repeat="link in links" compile="link">{{link}}</li>
+  </ul>
+</div>
+<hr>
+<div class="record-body" ng-show="expanded" ng-transclude></div>

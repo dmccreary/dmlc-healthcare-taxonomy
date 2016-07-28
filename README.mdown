@@ -1,0 +1,204 @@
+# DMLC Healthcare demo
+Demo for Healthcare
+
+## UI Prerequisites
+* Install [Node JS](http://nodejs.org/)
+* Install gulp:  
+```bash
+> npm -g install gulp
+```
+* Install bower:
+```bash
+> npm -g install bower
+```
+
+### Install the application node dependencies (for development only. These don't get deployed)
+In the app directory run: (lots of stuff gets installed. Don't freak)  
+```bash
+> npm install
+```
+In the app directory run:  
+```bash
+> bower install
+```
+
+## Bootstrap: ##
+```bash
+> ./ml local bootstrap
+```
+
+## Deploy the backend code:  ##
+```bash
+> ./ml local deploy modules
+```
+
+## Load the Content ##
+Loading the content is a long running effort when using all of the full data sets. For convenience subsets of the full data are checked into source control. These should be sufficient for running in development.
+
+For running in production you will need to download all of the required data sets and place them in the appropriate data/** directories.
+
+Specifically, the files that need to be downloaded are:
+- [CMS Anonymized claims data](#cmspatientrecords)
+  - goes in data/claims
+- [NPI file](#npifile)
+  - goes in data/npi
+- [Provider Charge Data](#providerchargedata)
+  - goes in data/provider-charge-data
+- [Structured Product Labels](#spl)
+  - goes in data/spl
+
+To deploy the content simply type:  
+```bash
+> ./ml local deploy content
+```
+
+## Datasets
+### Health Care Provider Taxonomy Code Set
+This is a csv file that serves as a lookup from a code to a Specialty. NPI files have the codes in them and we need to resolve them
+specialties.  
+[Get it Here](http://www.nucc.org/index.php?option=com_content&view=article&id=107&Itemid=132)
+
+### Comprehensive NDC SPL Data Elements File
+Goes in the data/spl-to-ndc directory  
+[Get it Here](http://www.fda.gov/ForIndustry/DataStandards/StructuredProductLabeling/ucm240580.htm)
+
+
+### NPI<a href="npifile"></a>
+The full listing of US healthcare providers in csv format
+
+#### Links
+- [NPI website](http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/NationalProvIdentStand/DataDissemination.html)
+- [The Full NPI CSV File](http://nppes.viva-it.com/NPI_Files.html)
+
+
+### Provider Charge data<a name="providerchargedata"></a>
+Provides stats on which hcpcs codes providers charged most in 2012. We are using this file to map providers to their most common used hcpcs codes.  
+This later lets us randomly assign a provider to a claim/patient based on which hcpcs codes are used in the claim
+
+[Get it Here](http://download.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/Medicare-Physician-and-Other-Supplier-PUF-CY2012.zip?agree=yes&next=Accept)
+
+### NPI Various Codes and Lookups
+These codes were copied into the code by hand from the PDF file to be used as lookups to denormalize codes to descriptions.
+
+[Get the PDF](http://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/NationalProvIdentStand/Downloads/Data_Dissemination_File-Code_Values.pdf)
+
+
+### Structured Product Labels<a name="spl"></a>
+Provided by the National Library of Medicine.  
+[NLM website for SPL](http://dailymed.nlm.nih.gov/dailymed/spl-resources-all-drug-labels.cfm)
+
+### RXNorm and NDDF triples
+RXNorm and NDDF are exported into triples form the [UMLS Database](http://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html) using the [Bioportal umls2rdf Project](https://github.com/ncbo/umls2rdf).
+
+#### Try and download them first
+The easiest thing to do is download the triples that Bioportal created for you. These may be a bit stale, but it saves you the effort of creating them yourself.
+[Bioportal Ontologies](http://bioportal.bioontology.org/ontologies)
+
+#### If you Really MUST create a fresh triples file from UMLS
+
+##### Download UMLS
+[UMLS Database Download](http://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html)
+##### Build a MySQL db
+Use the [mmsys](http://download.nlm.nih.gov/umls/kss/2014AB/full/mmsys.zip) tool from UMLS to build a MySQL database.
+##### Extract the triples
+Use the [Bioportal umls2rdf Project](https://github.com/ncbo/umls2rdf) to extract the triples.
+
+### ICD9 codes
+Download the latest ICD9 codes files from the [CMS ICD9 website](https://www.cms.gov/Medicare/Coding/ICD9ProviderDiagnosticCodes/codes.html).  
+Put them in data/codes/icd9.  
+Put CMS\*_DESC_LONG_DX.txt in ./diagnosis  
+Put CMS\*_DESC_LONG_SG.txt in ./procedure  
+Run ./ml build_icd9  
+This will create xquery variables you can put in your code.
+
+### GeoNames Zip to lat/lng
+Download the US zip file from the [Geonames download site](http://download.geonames.org/export/zip/)  
+Put the file in data/geonames
+
+### Synthetic C32 patient records
+We have 2000 synthetic patient records from [Exact Data, LLC](http://www.exactdata.net/products-and-services/data-products/)
+
+### CMS Anonymized Patient Records<a name="cmspatientrecords"></a>
+Download from the  [cms.gov Data Entrepreneurs Synthetic PUF](http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html)
+
+#### We are using 4 types:
+- Beneficiary Summary File
+- Inpatient Claims
+- Outpatient Claims
+- Prescription Drug Events
+
+#### How we use them
+- We first ingest the 3 different claims data types (inpatient, outpatient, rx) into claim records. 1 XML file <claim> per row of the source CSV files. The data is run through a simple transform to clean up the element names and insert user friendly drug names, etc.
+- Next We use the Beneficiary Summary File to generate a synthetic C32 Patient record for each row in the CSV file. The transform for this step finds all claims that belong to each patient. The claims information is then used to insert Procedures or Problems into the C32 file. At the same time we dynamically assign a provider based on the HPCS code(s) in the claim. Given a HPCS code and the patient's zip code we are able to select a random, appropriate provider near the patient.
+
+#### Quick download links for linux
+
+##### Download the files
+```bash
+#!/bin/bash
+
+for i in {1..20}
+do
+  nohup wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2008_Beneficiary_Summary_File_Sample_${i}.zip 2>&1 &
+  nohup wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2009_Beneficiary_Summary_File_Sample_${i}.zip 2>&1 &
+  nohup wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2010_Beneficiary_Summary_File_Sample_${i}.zip 2>&1 &
+  nohup wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2008_to_2010_Inpatient_Claims_Sample_${i}.zip 2>&1 &
+  nohup wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2008_to_2010_Outpatient_Claims_Sample_${i}.zip 2>&1 &
+  nohup wget http://downloads.cms.gov/files/DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_${i}.zip 2>&1 &
+done
+```
+
+##### Move the files into the right dir
+```bash
+#!/bin/bash
+
+mv *Bene* summary/
+mv *Inp* inpatient/
+mv *Out* outpatient/
+mv *Pres* rx/
+```
+
+## Starting the UI under node.js (optional)
+In the app directory run:  
+```bash
+> gulp
+```
+
+
+## Deploy to a production environment (assuming centos or redhat)
+* Put the code on the production box however you like
+* Install dependencies:
+  - [Node JS](http://nodejs.org/)
+  - Bower
+```bash
+  > npm -g install bower
+```
+  - forever
+```bash
+  > npm -g install forever
+  > npm install && bower install
+```
+* Build release
+```bash
+  > gulp build
+```
+* Copy the dmlc-hc.initscript to /etc/init.d/dmlc-hc-2
+```bash
+  > cp dmlc-hc.initscript /etc/init.d/dmlc-hc-2
+```
+* change perms on the init script
+```bash
+  > chmod 755 /etc/init.d/dmlc-hc-2
+```
+* update /etc/init.d/dmlc-hc-2 to point to your directory
+* Configure dmlc-hc to survive reboots:
+```bash
+  > chkconfig --add dmlc-hc
+```
+```bash
+  > chkconfig --levels 2345 dmlc-hc-2 on
+```
+* Start it up
+```bash
+  > service dmlc-hc-2 start
+```

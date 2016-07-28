@@ -1,0 +1,1047 @@
+<configuration>
+<!--
+  Only enable the task server section if you need to.
+  <task-server group="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://marklogic.com/xdmp/group" xsi:schemaLocation="http://marklogic.com/xdmp/group group.xsd">
+    <threads>16</threads>
+    <debug-threads>16</debug-threads>
+    <max-time-limit>3600</max-time-limit>
+    <default-time-limit>600</default-time-limit>
+    <queue-size>100000</queue-size>
+    <pre-commit-trigger-depth>1000</pre-commit-trigger-depth>
+    <post-commit-trigger-depth>1000</post-commit-trigger-depth>
+    <pre-commit-trigger-limit>10000</pre-commit-trigger-limit>
+    <log-errors>true</log-errors>
+    <debug-allow>true</debug-allow>
+    <profile-allow>true</profile-allow>
+    <scheduled-tasks>
+      <scheduled-task>
+        <task-path>/some/daily-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>daily</task-type>
+        <task-period>2</task-period>
+        <task-start-time>13:00:00-05:00</task-start-time>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+      <scheduled-task>
+        <task-path>/some/hourly-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>hourly</task-type>
+        <task-period>2</task-period>
+        <task-minute>15</task-minute>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+      <scheduled-task>
+        <task-path>/some/minutely-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>minutely</task-type>
+        <task-period>3</task-period>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+      <scheduled-task>
+        <task-path>/some/monthly-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>monthly</task-type>
+        <task-period>1</task-period>
+        <task-month-day>15</task-month-day>
+        <task-start-time>13:00:00-05:00</task-start-time>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+      <scheduled-task>
+        <task-path>/some/once-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>once</task-type>
+        <task-period>1</task-period>
+        <task-start>2019-01-01T13:00:00-05:00</task-start>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+      <scheduled-task>
+        <task-path>/some/weekly-task.xqy</task-path>
+        <task-root>/</task-root>
+        <task-type>weekly</task-type>
+        <task-period>1</task-period>
+        <task-days>
+          <task-day>monday</task-day>
+          <task-day>wednesday</task-day>
+          <task-day>friday</task-day>
+        </task-days>
+        <task-start-time>13:00:00-05:00</task-start-time>
+        <task-database name="@ml.content-db"/>
+        <task-modules name="@ml.app-modules-db"/>
+        <task-user name="@ml.app-name-user"/>
+      </scheduled-task>
+    </scheduled-tasks>
+  </task-server>
+-->
+  <http-servers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://marklogic.com/xdmp/group" xsi:schemaLocation="http://marklogic.com/xdmp/group group.xsd">
+    <!--Default Application Server-->
+    <http-server group="Default">
+      <http-server-name>@ml.app-name</http-server-name>
+      <port>@ml.app-port</port>
+      <database name="@ml.content-db"/>
+      <modules name="@ml.app-modules-db"/>
+      <root>@ml.modules-root</root>
+      <authentication>@ml.authentication-method</authentication>
+      <default-user name="@ml.default-user"/>
+      <url-rewriter>@ml.url-rewriter</url-rewriter>
+      <error-handler>@ml.error-handler</error-handler>
+      <rewrite-resolves-globally>@ml.rewrite-resolves-globally</rewrite-resolves-globally>
+      <!-- for external security use:
+
+      <internal-security>false</internal-security>
+      <external-security name="name-of-your-external-security-config"/>
+
+      -->
+
+      <namespaces>
+        <namespace>
+          <prefix>hl7</prefix>
+          <namespace-uri>urn:hl7-org:v3</namespace-uri>
+        </namespace>
+      </namespaces>
+      <!-- <ssl-certificate-template>@ml.ssl-certificate-template</ssl-certificate-template> -->
+    </http-server>
+    @ml.test-appserver
+    @ml.rest-appserver
+  </http-servers>
+  <xdbc-servers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://marklogic.com/xdmp/group" xsi:schemaLocation="http://marklogic.com/xdmp/group group.xsd">
+    @ml.xdbc-server
+  </xdbc-servers>
+  <odbc-servers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://marklogic.com/xdmp/group" xsi:schemaLocation="http://marklogic.com/xdmp/group group.xsd">
+    @ml.odbc-server
+  </odbc-servers>
+  <!--Assignments-->
+  <assignments xmlns="http://marklogic.com/xdmp/assignments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://marklogic.com/xdmp/assignments assignments.xsd">
+    <assignment>
+      <forest-name>@ml.content-db</forest-name>
+      @ml.forest-data-dir-xml
+    </assignment>
+    @ml.test-content-db-assignment
+    @ml.test-modules-db-assignment
+    @ml.rest-modules-db-assignment
+    <assignment>
+      <forest-name>@ml.modules-db</forest-name>
+    </assignment>
+    @ml.schemas-assignment
+    @ml.triggers-assignment
+  </assignments>
+  <!--
+    =========================================================
+    Databases that are created as part of the application
+    Add any database configuration or indexes here
+      =========================================================
+  -->
+  <databases xmlns="http://marklogic.com/xdmp/database" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://marklogic.com/xdmp/database database.xsd">
+    <!--Application Database Configuration-->
+    @ml.test-content-db-xml
+    @ml.rest-modules-db-xml
+    <database group="Default">
+      <database-name>@ml.content-db</database-name>
+      <forests-per-host>@ml.content-forests-per-host</forests-per-host>
+      @ml.schemas-mapping
+      @ml.triggers-mapping
+      <forests>
+        <forest-id name="@ml.content-db"/>
+        @ml.forest-data-dir-xml
+      </forests>
+      <uri-lexicon>true</uri-lexicon>
+      <triple-index>true</triple-index>
+      <collection-lexicon>true</collection-lexicon>
+      <directory-creation>manual</directory-creation>
+      <maintain-last-modified>false</maintain-last-modified>
+<!--
+      <fragment-roots>
+        <fragment-root>
+          <namespace-uri>http://www.marklogic.com/ns/sample</namespace-uri>
+          <localname>frag-root</localname>
+        </fragment-root>
+      </fragment-roots>
+      <fragment-parents>
+        <fragment-parent>
+          <namespace-uri>http://www.marklogic.com/ns/sample</namespace-uri>
+          <localname>frag-parents</localname>
+        </fragment-parent>
+      </fragment-parents>
+-->
+      <fields>
+        <!--        <field>
+          <field-name></field-name>
+          <field-path>
+            <path>some/xpath</path>
+            <weight>1.0</weight>
+          </field-path>
+          <word-lexicons/>
+          <included-elements/>
+          <excluded-elements/>
+          <tokenizer-overrides/>
+          <stemmed-searches>basic</stemmed-searches>
+          <fast-phrase-searches>true</fast-phrase-searches>
+          <fast-case-sensitive-searches>true</fast-case-sensitive-searches>
+          <fast-diacritic-sensitive-searches>true</fast-diacritic-sensitive-searches>
+        </field> -->
+        <field>
+          <field-name>diagnosis</field-name>
+          <include-root>false</include-root>
+          <fast-case-sensitive-searches>false</fast-case-sensitive-searches>
+          <fast-diacritic-sensitive-searches>false</fast-diacritic-sensitive-searches>
+          <fast-phrase-searches>false</fast-phrase-searches>
+          <one-character-searches>false</one-character-searches>
+          <stemmed-searches>basic</stemmed-searches>
+          <three-character-searches>false</three-character-searches>
+          <three-character-word-positions>false</three-character-word-positions>
+          <trailing-wildcard-searches>false</trailing-wildcard-searches>
+          <trailing-wildcard-word-positions>false</trailing-wildcard-word-positions>
+          <two-character-searches>false</two-character-searches>
+          <value-positions>false</value-positions>
+          <value-searches>false</value-searches>
+          <word-searches>false</word-searches>
+          <word-lexicons/>
+          <included-elements>
+
+            <included-element>
+              <namespace-uri/>
+              <localname>diag_1</localname>
+              <weight>1.0</weight>
+              <attribute-namespace-uri/>
+              <attribute-localname/>
+              <attribute-value/>
+            </included-element>
+
+            <included-element>
+              <namespace-uri/>
+              <localname>diag_2</localname>
+              <weight>1.0</weight>
+              <attribute-namespace-uri/>
+              <attribute-localname/>
+              <attribute-value/>
+            </included-element>
+
+            <included-element>
+              <namespace-uri/>
+              <localname>diag_3</localname>
+              <weight>1.0</weight>
+              <attribute-namespace-uri/>
+              <attribute-localname/>
+              <attribute-value/>
+            </included-element>
+
+          </included-elements>
+          <excluded-elements/>
+        </field>
+      </fields>
+
+      <range-element-indexes>
+        <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri></namespace-uri>
+          <localname>Item_Code NDC11 type drug-name patient-ssn ndc age gender race readmitted</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <range-element-index>
+          <scalar-type>decimal</scalar-type>
+          <namespace-uri></namespace-uri>
+          <localname>payment-amount gross-drug-cost patient-pay-amount inpatient-deductible quantity days-supply</localname>
+          <collation/>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <range-element-index>
+          <scalar-type>date</scalar-type>
+          <namespace-uri></namespace-uri>
+          <localname>rx-service-date from</localname>
+          <collation/>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri>http://marklogic.com/cms</namespace-uri>
+          <localname>entity-type gender credential npi zip5 specialization</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <!-- FAERS safetyrecord -->
+
+        <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri/>
+          <localname>reporterorganization serious</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri>http://fda.gov/ns/faers</namespace-uri>
+          <localname>report-id gender reaction drug-name ingredient ndc indication outcome country version status creator drug-class manufacturer</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+
+        <range-element-index>
+          <scalar-type>dateTime</scalar-type>
+          <namespace-uri>http://fda.gov/ns/faers</namespace-uri>
+          <localname>report-date</localname>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+<!--         <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri></namespace-uri>
+          <localname>occurcountry serious senderorganization receiverorganization drugcharacterization medicinalproduct  drugdosageform reactionmeddrapt patientsex reactionoutcome</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index> -->
+
+        <range-element-index>
+          <scalar-type>int</scalar-type>
+          <namespace-uri>http://fda.gov/ns/faers</namespace-uri>
+          <localname>patient-age</localname>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>ignore</invalid-values>
+        </range-element-index>
+<!--         <range-element-index>
+          <scalar-type>decimal</scalar-type>
+          <namespace-uri></namespace-uri>
+          <localname>patientonsetage</localname>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index> -->
+
+        <!--
+        Sample for:
+          <name xmlns="http://marklogic.com/ns/sample">bob<name>
+
+        <range-element-index>
+          <scalar-type>string</scalar-type>
+          <namespace-uri>http://marklogic.com/ns/sample</namespace-uri>
+          <localname>name</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-index>
+-->
+      </range-element-indexes>
+      <range-element-attribute-indexes>
+<!--
+        Sample for:
+          <person name="bob" xmlns="http://marklogic.com/ns/sample"/>
+
+        <range-element-attribute-index>
+          <scalar-type>string</scalar-type>
+          <parent-namespace-uri>http://marklogic.com/ns/sample</parent-namespace-uri>
+          <parent-localname>person</parent-localname>
+          <namespace-uri/>
+          <localname>name</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-attribute-index>
+-->
+        <range-element-attribute-index>
+          <scalar-type>decimal</scalar-type>
+          <parent-namespace-uri>http://marklogic.com/cms</parent-namespace-uri>
+          <parent-localname>address</parent-localname>
+          <namespace-uri/>
+          <localname>lat lng</localname>
+          <range-value-positions>false</range-value-positions>
+        </range-element-attribute-index>
+
+        <range-element-attribute-index>
+          <scalar-type>string</scalar-type>
+          <parent-namespace-uri></parent-namespace-uri>
+          <parent-localname>drugdosageform</parent-localname>
+          <namespace-uri/>
+          <localname>normalized</localname>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <range-value-positions>false</range-value-positions>
+        </range-element-attribute-index>
+
+      </range-element-attribute-indexes>
+      <range-field-indexes>
+        <range-field-index>
+          <namespace-uri></namespace-uri>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <field-name>diagnosis</field-name>
+          <range-value-positions>false</range-value-positions>
+        </range-field-index>
+      </range-field-indexes>
+
+      <path-namespaces>
+<!--
+        <path-namespace>
+          <prefix>sample</prefix>
+          <namespace-uri>http://marklogic.com/ns/sample</namespace-uri>
+        </path-namespace>
+-->
+        <path-namespace>
+          <prefix>hl7</prefix>
+          <namespace-uri>urn:hl7-org:v3</namespace-uri>
+        </path-namespace>
+
+      </path-namespaces>
+
+      <range-path-indexes>
+
+        <!-- Provider NPI from C32 -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument//hl7:assignedEntity/hl7:id[@root="2.16.840.1.113883.4.6"]/@extension</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Patient SSN -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:id[@root="2.16.840.1.113883.4.1"]/@extension</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Patient last name -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:patient/hl7:name/hl7:family</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Problems -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:act/hl7:entryRelationship/hl7:observation/hl7:value/hl7:translation[@codeSystemName="ICD9"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Medications -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:substanceAdministration/hl7:consumable/hl7:manufacturedProduct/hl7:manufacturedMaterial/hl7:code[@codeSystemName="NDC"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Height -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "8302-2"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Weight -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "3141-9"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Respiration -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "9279-1"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Heart Rate -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "8867-4"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Systolic BP -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "8480-6"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Diastolic BP -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "8462-4"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Body Temp -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <collation/>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation[hl7:code[@code = "8310-5"]]/hl7:value/@value</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Family History -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:component/hl7:observation/hl7:code[@codeSystem="2.16.840.1.113883.6.96"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Family History - family member affected -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:subject/hl7:relatedSubject/hl7:code[@codeSystem="2.16.840.1.113883.5.111"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Medical Procedures -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument/hl7:component/hl7:structuredBody/hl7:component/hl7:section/hl7:entry/hl7:organizer/hl7:code[@codeSystem="2.16.840.1.113883.6.1"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:document//hl7:code[@codeSystem="2.16.840.1.113883.6.69"]/@code</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Marital Status -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument//hl7:maritalStatusCode[@codeSystem="2.16.840.1.113883.5.2"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Race -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument//hl7:raceCode[@codeSystem="2.16.840.1.113883.6.238"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Gender -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:ClinicalDocument//hl7:administrativeGenderCode[@codeSystem="2.16.840.1.113883.5.1"]/@displayName</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Patient Latitude -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <path-expression>/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:addr/@lat</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Patient Longitude -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <path-expression>/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:addr/@lng</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Patient zip code -->
+        <range-path-index>
+          <scalar-type>decimal</scalar-type>
+          <path-expression>/hl7:ClinicalDocument/hl7:recordTarget/hl7:patientRole/hl7:addr/hl7:postalCode</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+
+
+        <!-- CLAIMS DATA -->
+
+        <!-- Procedures -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/claim/procedures/procedure/name</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- Diagnoses -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/claim/diagnoses/diagnosis/name</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- SPL -->
+        <!-- active ingredients -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:document//hl7:activeIngredient/hl7:activeIngredientSubstance/hl7:name</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+        <!-- inactive ingredients -->
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/hl7:document//hl7:inactiveIngredient/hl7:inactiveIngredientSubstance/hl7:name</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+
+<!--
+        <range-path-index>
+          <scalar-type>string</scalar-type>
+          <collation>http://marklogic.com/collation/codepoint</collation>
+          <path-expression>/sample:root/sample:child</path-expression>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </range-path-index>
+-->
+      </range-path-indexes>
+
+      <geospatial-element-indexes>
+<!--
+        <geospatial-element-index>
+          <namespace-uri>http://www.marklogic.com/ns/sample</namespace-uri>
+          <localname>geo-element</localname>
+          <coordinate-system>wgs84</coordinate-system>
+          <point-format>point</point-format>
+          <range-value-positions>false</range-value-positions>
+          <invalid-values>reject</invalid-values>
+        </geospatial-element-index>
+-->
+      </geospatial-element-indexes>
+
+      <geospatial-element-attribute-pair-indexes>
+<!--
+        Sample for:
+          <geo lat="37.237162" lon="-115.8099747" xmlns="http://marklogic.com/ns/sample"/>
+-->
+        <geospatial-element-attribute-pair-index>
+          <parent-namespace-uri>http://marklogic.com/cms</parent-namespace-uri>
+          <parent-localname>address</parent-localname>
+          <latitude-namespace-uri/>
+          <latitude-localname>lat</latitude-localname>
+          <longitude-namespace-uri/>
+          <longitude-localname>lng</longitude-localname>
+          <coordinate-system>wgs84</coordinate-system>
+          <range-value-positions>false</range-value-positions>
+        </geospatial-element-attribute-pair-index>
+
+        <geospatial-element-attribute-pair-index>
+          <parent-namespace-uri>urn:hl7-org:v3</parent-namespace-uri>
+          <parent-localname>addr</parent-localname>
+          <latitude-namespace-uri/>
+          <latitude-localname>lat</latitude-localname>
+          <longitude-namespace-uri/>
+          <longitude-localname>lng</longitude-localname>
+          <coordinate-system>wgs84</coordinate-system>
+          <range-value-positions>false</range-value-positions>
+        </geospatial-element-attribute-pair-index>
+      </geospatial-element-attribute-pair-indexes>
+
+      <geospatial-element-pair-indexes>
+<!--
+        Sample for:
+          <geo xmlns="http://marklogic.com/ns/sample">
+            <lat>37.237162</lat>
+            <lon>-115.8099747</lon>
+          </geo>
+
+        <geospatial-element-pair-index>
+          <parent-namespace-uri>http://marklogic.com/ns/sample</parent-namespace-uri>
+          <parent-localname>geo</parent-localname>
+          <latitude-namespace-uri>http://marklogic.com/ns/sample</latitude-namespace-uri>
+          <latitude-localname>lat</latitude-localname>
+          <longitude-namespace-uri>http://marklogic.com/ns/sample</longitude-namespace-uri>
+          <longitude-localname>lon</longitude-localname>
+          <coordinate-system>wgs84</coordinate-system>
+          <range-value-positions>true</range-value-positions>
+        </geospatial-element-pair-index>
+-->
+      </geospatial-element-pair-indexes>
+      <geospatial-element-child-indexes>
+<!--
+        Sample for:
+          <geo xmlns="http://marklogic.com/ns/sample">
+            <pos>37.237162,-115.8099747</pos>
+          </geo>
+
+        <geospatial-element-child-index>
+          <parent-namespace-uri>http://marklogic.com/ns/sample</parent-namespace-uri>
+          <parent-localname>geo</parent-localname>
+          <namespace-uri>http://marklogic.com/ns/sample</namespace-uri>
+          <localname>pos</localname>
+          <coordinate-system>wgs84</coordinate-system>
+          <point-format>point</point-format>
+          <range-value-positions>false</range-value-positions>
+        </geospatial-element-child-index>
+-->
+      </geospatial-element-child-indexes>
+      <element-word-lexicons>
+<!--
+        <element-word-lexicon>
+          <namespace-uri>http://www.marklogic.com/ns/sample</namespace-uri>
+          <localname>sample-element</localname>
+          <collation>http://marklogic.com/collation/</collation>
+        </element-word-lexicon>
+-->
+      </element-word-lexicons>
+      <element-attribute-word-lexicons>
+<!--
+        <element-attribute-word-lexicon>
+          <parent-namespace-uri>http://www.marklogic.com/ns/sample</parent-namespace-uri>
+          <parent-localname>sample-element</parent-localname>
+          <namespace-uri/>
+          <localname>sample-attribute</localname>
+          <collation>http://marklogic.com/collation/</collation>
+        </element-attribute-word-lexicon>
+-->
+      </element-attribute-word-lexicons>
+    </database>
+    <!--Create Application Modules Database-->
+    <database group="Default">
+      <database-name>@ml.modules-db</database-name>
+      <forests>
+        <forest-id name="@ml.modules-db"/>
+      </forests>
+      <stemmed-searches>off</stemmed-searches>
+      <word-searches>false</word-searches>
+      <word-positions>false</word-positions>
+      <fast-phrase-searches>false</fast-phrase-searches>
+      <fast-reverse-searches>false</fast-reverse-searches>
+      <fast-case-sensitive-searches>false</fast-case-sensitive-searches>
+      <fast-diacritic-sensitive-searches>false</fast-diacritic-sensitive-searches>
+      <fast-element-word-searches>false</fast-element-word-searches>
+      <element-word-positions>false</element-word-positions>
+      <fast-element-phrase-searches>false</fast-element-phrase-searches>
+      <element-value-positions>false</element-value-positions>
+      <attribute-value-positions>false</attribute-value-positions>
+      <three-character-searches>false</three-character-searches>
+      <three-character-word-positions>false</three-character-word-positions>
+      <fast-element-character-searches>false</fast-element-character-searches>
+      <trailing-wildcard-searches>false</trailing-wildcard-searches>
+      <trailing-wildcard-word-positions>false</trailing-wildcard-word-positions>
+      <fast-element-trailing-wildcard-searches>false</fast-element-trailing-wildcard-searches>
+      <word-lexicons/>
+      <two-character-searches>false</two-character-searches>
+      <one-character-searches>false</one-character-searches>
+      <uri-lexicon>true</uri-lexicon>
+      <collection-lexicon>false</collection-lexicon>
+      <directory-creation>automatic</directory-creation>
+      <maintain-last-modified>false</maintain-last-modified>
+    </database>
+    <!--Create Test Modules Database-->
+    @ml.test-modules-db-xml
+    <!--Create a Triggers Database-->
+    @ml.triggers-db-xml
+    @ml.schemas-db-xml
+  </databases>
+  <certificate xmlns="http://marklogic.com/xdmp/pki">
+    <name>@ml.ssl-certificate-template</name>
+    <countryName>@ml.ssl-certificate-countryName</countryName>
+    <stateOrProvinceName>@ml.ssl-certificate-stateOrProvinceName</stateOrProvinceName>
+    <localityName>@ml.ssl-certificate-localityName</localityName>
+    <organizationName>@ml.ssl-certificate-organizationName</organizationName>
+    <organizationalUnitName>@ml.ssl-certificate-organizationalUnitName</organizationalUnitName>
+    <emailAddress>@ml.ssl-certificate-emailAddress</emailAddress>
+  </certificate>
+  <roles xmlns="http://marklogic.com/xdmp/security">
+    <role>
+      <role-name>@ml.app-role</role-name>
+      <description>A role for users of the @ml.app-name application</description>
+      <role-names>
+        <role-name>sql-execution</role-name>
+      </role-names>
+      <permissions>
+        <permission>
+          <capability>execute</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>read</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+      </permissions>
+      <collections>
+      </collections>
+      <privileges>
+        <privilege>
+          <privilege-name>rest-reader</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:value</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:add-response-header</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:invoke</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:with-namespaces</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>any-uri</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdbc:eval</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:eval</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdbc:eval-in</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>sem:sparql</privilege-name>
+        </privilege>
+      </privileges>
+    </role>
+    <role>
+      <role-name>@ml.app-role-writer</role-name>
+      <description>A role for Admin users of the @ml.app-name application</description>
+      <role-names>
+        <role-name>@ml.app-role</role-name>
+        <role-name>rest-extension-user</role-name>
+        <role-name>application-plugin-registrar</role-name>
+      </role-names>
+      <permissions>
+        <permission>
+          <capability>execute</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>update</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>insert</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>read</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+      </permissions>
+      <collections>
+      </collections>
+      <privileges>
+        <privilege>
+          <privilege-name>rest-admin</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>rest-writer</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>rest-reader</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:value</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:add-response-header</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:invoke</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:with-namespaces</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>any-uri</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:eval</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdbc:eval</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdbc:eval-in</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdbc:insert</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>sem:sparql</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:xslt-invoke</privilege-name>
+        </privilege>
+        <privilege>
+          <privilege-name>xdmp:spawn</privilege-name>
+        </privilege>
+      </privileges>
+    </role>
+  </roles>
+  <users xmlns="http://marklogic.com/xdmp/security">
+    <user>
+      <user-name>@ml.app-name-user</user-name>
+      <description>A user for the @ml.app-name application</description>
+      <password>@ml.appuser-password</password>
+      <role-names>
+        <role-name>@ml.app-role-writer</role-name>
+      </role-names>
+      <permissions>
+        <permission>
+          <capability>execute</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>update</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>insert</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+        <permission>
+          <capability>read</capability>
+          <role-name>@ml.app-role</role-name>
+        </permission>
+      </permissions>
+      <collections/>
+    </user>
+  </users>
+  <users xmlns="http://marklogic.com/xdmp/security">
+    <user>
+      <user-name>doctor</user-name>
+      <description>A Doctor user for the @ml.app-name application</description>
+      <password>GNqxGUKgwiVprHCag2hKj7pyz</password>
+      <role-names>
+        <role-name>@ml.app-role-writer</role-name>
+      </role-names>
+      <permissions/>
+      <collections/>
+    </user>
+    <user>
+      <user-name>payor</user-name>
+      <description>A Payor user for the @ml.app-name application</description>
+      <password>Zkh4gpCWBswrVixoTnM9xEMqd</password>
+      <role-names>
+        <role-name>@ml.app-role-writer</role-name>
+      </role-names>
+      <permissions/>
+      <collections/>
+    </user>
+    <user>
+      <user-name>patient</user-name>
+      <description>A Patient user for the @ml.app-name application</description>
+      <password>kjCcTKdRChyHPbFE3NKTDnqa7</password>
+      <role-names>
+        <role-name>@ml.app-role-writer</role-name>
+      </role-names>
+      <permissions/>
+      <collections/>
+    </user>
+    <user>
+      <user-name>researcher</user-name>
+      <description>A Researcher user for the @ml.app-name application</description>
+      <password>oSDcp27QKTTL5d2Fc</password>
+      <role-names>
+        <role-name>@ml.app-role-writer</role-name>
+      </role-names>
+      <permissions/>
+      <collections/>
+    </user>
+  </users>
+  <amps xmlns="http://marklogic.com/xdmp/security">
+<!--
+  Sample amp. See the Understanding and Using Security Guide section 5.2 for
+  information about amps.
+  http://community.marklogic.com/pubs/5.0/books/security.pdf
+    <amp>
+      <namespace>http://marklogic.com/roxy</namespace>
+      <local-name>sample</local-name>
+      <doc-uri>/app/models/sample.xqy</doc-uri>
+      <db-name>@ml.app-modules-db</db-name>
+      <role-name>a-privileged-role</role-name>
+    </amp>
+-->
+  </amps>
+  <privileges xmlns="http://marklogic.com/xdmp/security">
+<!--
+    Sample execute privilege.
+    <privilege>
+      <privilege-name>my-action</privilege-name>
+      <action>http://marklogic.com/custom/privilege/my-action</action>
+      <kind>execute</kind>
+    </privilege>
+-->
+<!--
+    Sample URI privilege.
+    <privilege>
+      <privilege-name>users-uri</privilege-name>
+      <action>/users/</action>
+      <kind>uri</kind>
+    </privilege>
+-->
+  </privileges>
+  <mimetypes xmlns="http://marklogic.com/xdmp/mimetypes">
+<!--
+    Sample mimetype.
+    <mimetype>
+      <name>application/crazy</name>
+      <extension>crazy stuff</extension>
+      <format>text</format>
+    </mimetype>
+-->
+  </mimetypes>
+<!--
+  <external-securities xmlns="http://marklogic.com/xdmp/security">
+    <external-security>
+      <external-security-name>test</external-security-name>
+      <description>a big test</description>
+      <authentication>ldap</authentication>
+      <cache-timeout>300</cache-timeout>
+      <authorization>ldap</authorization>
+      <ldap-server-uri>ldap://dc1.mltest1.local:389</ldap-server-uri>
+      <ldap-base>CN=Users,DC=MLTEST1,DC=LOCAL</ldap-base>
+      <ldap-attribute>sAMAccountName</ldap-attribute>
+      <ldap-default-user/>
+      <ldap-password/>
+    </external-security>
+  </external-securities>
+-->
+</configuration>

@@ -1,0 +1,44 @@
+<div class="row provider-details" ng-init="provider = patientProviderCtrl.provider">
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-12 heading">
+        <div class="thumbnail"><i class="gender-icon fa-5x fa" ng-class="{'fa-group' : (patientProviderCtrl.provider.providerType === 'Organization'), 'fa-female' : (patientProviderCtrl.provider.gender === 'Female'), 'fa-male' : (patientProviderCtrl.provider.gender === 'Male')}"></i></div>
+        <hgroup>
+          <h1 class="provider-title">{{patientProviderCtrl.provider.name || patientProviderCtrl.provider.org}}</h1>
+          <h2>{{ provider.gender }}</h2>
+        </hgroup>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="provider-specialities">
+          <h3>Specialities</h3>
+          <div ng-repeat="spec in provider.specialities | orderBy: 'primary' " class="provider-speciality" ng-class="{ primary: 'primary' }">
+            <strong class="name">{{ spec.type }}</strong>
+            <div class="additional-info">
+              <ul class="list-unstyled meta">
+                <li><strong>Classification</strong> {{ spec.classification }}</li>
+                <li><strong>License No</strong> {{ spec.license }}</li>
+                <li><strong>State</strong> {{ spec.state }}</li>
+                <li><strong>Code</strong> {{ spec.code }}</li>
+                <li><strong>Primary</strong> {{ spec.primary ? 'Yes' : 'No' }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="provider-location">
+      <google-map options="patientProviderCtrl.mapOptions" class="location-map" fit="false" markers="patientProviderCtrl.markers"></google-map>
+      <h3>Location</h3>
+      <address>
+        {{ patientProviderCtrl.provider.address['addr-line1'] }} {{ patientProviderCtrl.provider.address['addr-line2'] }}
+        <br/>{{ patientProviderCtrl.provider.address.city }}, {{ patientProviderCtrl.provider.address.state }} {{ patientProviderCtrl.provider.address.zip5 }}
+        <span class="phone" ng-if="patientProviderCtrl.provider.address.phone"><br/><i class="fa fa-phone" title="Phone Number"></i> {{ patientProviderCtrl.provider.address.phone | phone }}</span>
+        <span class="phone" ng-if="patientProviderCtrl.provider.address.fax"><br/><i class="fa fa-fax" title="Fax"></i> {{ patientProviderCtrl.provider.address.fax || phone }}</span>
+      </address>
+    </div>
+  </div>
+</div>

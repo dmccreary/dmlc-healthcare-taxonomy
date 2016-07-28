@@ -1,0 +1,18 @@
+<div class="payor-dashboard">
+  <div class="row">
+
+    <div class="col-xs-12 payor-header">
+      <h3 class="pagetitle">Payor Dashboard</h3>
+      <button ng-click="addWidget()" class="btn btn btn-xs btn-default">Add <i class="fa fa-plus"></i></button>
+      <button ng-click="saveWidgets()" class="btn btn btn-xs btn-default">Save <i class="fa fa-save"></i></button>
+
+    </div>
+
+    <div class="col-xs-12">
+      <div widget="widget"
+        ng-repeat="widget in widgets"
+        constraints="constraints"
+        suggest="suggest"
+        remove-widget="removeWidget($index)"></div>
+  </div>
+</div>

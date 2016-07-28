@@ -1,0 +1,20 @@
+<div>
+  <h4>
+    <i class="demo-icon icon-labeledbottle"></i>
+    <a ng-href="/view/spl{{spl.uri}}" target="_self">
+      {{ spl.content.title }}
+    </a>
+  </h4>
+  <div class="meta" ng-if="spl.content.reportId">
+    <strong>ReportId:</strong>
+    <span class="meta-value">{{spl.content.reportId}}</span>
+  </div>
+  <div class="meta" ng-if="spl.content.reportId">
+    <strong>Reactions:</strong>
+    <span class="meta-value" ng-repeat="reaction in spl.content.reactions">{{reaction}}</span>
+  </div>
+  <div class="meta" ng-if="spl.content.reportId">
+    <strong>Manufacturer:</strong>
+    <span class="meta-value"></span>
+  </div>
+</div>

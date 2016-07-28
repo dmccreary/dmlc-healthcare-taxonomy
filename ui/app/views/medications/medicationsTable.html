@@ -1,0 +1,26 @@
+<div class="info-table">
+
+  <span ng-if="!data || data.length === 0">No Medications</span>
+  <table class="table table-striped" ng-if="data && data.length > 0">
+    <thead>
+      <tr>
+        <th>Date Prescribed</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Prescriber</th>
+        <th>NDC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="point in data | orderBy:'prescribed'">
+        <td>{{point.prescribed | date:'mediumDate'}}</td>
+        <td>
+          <a href ng-click="ctrl.showLabel(point.spl, point.name)">{{point.name}}</a>
+        </td>
+        <td>{{point.quantity}}</td>
+        <td>{{point.prescriber}}</td>
+        <td>{{point.ndc}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
