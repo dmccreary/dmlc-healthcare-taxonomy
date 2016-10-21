@@ -8,10 +8,16 @@ module Roxy
         @port = options[:app_port]
       end
       @http = Roxy::Http.new({
-        :logger => @logger
+        :logger => @logger,
+        :http_connection_retry_count => options[:http_connection_retry_count],
+        :http_connection_open_timeout => options[:http_connection_open_timeout],
+        :http_connection_read_timeout => options[:http_connection_read_timeout],
+        :http_connection_retry_delay => options[:http_connection_retry_delay]
       })
       @request = {}
       @gmt_offset = Time.now.gmt_offset
+      @server_version = options[:server_version]
+      @rest_protocol = "http#{options[:use_https_for_rest] ? 's' : ''}"
 
     end
 
@@ -32,6 +38,7 @@ module Roxy
     end
 
     def install_properties(path)
+      @logger.info("Loading REST properties in #{path}")
       if (File.exists?(path))
         headers = {
           'Content-Type' => 'application/xml'
@@ -47,14 +54,51 @@ module Roxy
             # Properties file needs to be updated
             raise ExitException.new "#{d} is in an old format; changes to this file won't take effect. See https://github.com/marklogic/roxy/wiki/REST-properties-format-change"
           else
+            copy = ""+ contents
+            copy = copy.gsub(/<!--.*?-->/m, '')
+            if @server_version > 7 && copy.match('<error-format')
+              @logger.info "WARN: REST property error-format has been deprecated since MarkLogic 8"
+              contents = copy.gsub(/<error-format[^>]*>[^<]+<\/error-format>/m, '')
+            end
             # Properties is in the correct format
             # @logger.debug "methods: #{methods}"
-            url = "http://#{@hostname}:#{@port}/v1/config/properties"
+            url = "#{@rest_protocol}://#{@hostname}:#{@port}/v1/config/properties"
 
             r = go(url, "put", headers, nil, contents)
             if (r.code.to_i < 200 && r.code.to_i > 206)
               @logger.error("code: #{r.code.to_i} body:#{r.body}")
             end
+          end
+        end
+      else
+        @logger.error "#{path} does not exist"
+      end
+    end
+
+    def install_options(path)
+      @logger.info("Loading REST options in #{path}")
+      if (File.exists?(path))
+        Dir.foreach(path) do |item|
+          next if item == '.' or item == '..'
+
+          file = open("#{path}/#{item}", "rb")
+          ext = File.extname(item)
+          basename = File.basename(item, ext)
+
+          headers = {}
+          if (ext == '.xml')
+            headers['Content-Type'] = 'application/xml'
+          elsif (ext == '.json')
+            headers['Content-Type'] = 'application/json'
+          else
+            @logger.error("Unrecognized REST options format: #{item}")
+          end
+
+          contents = file.read
+
+          r = go("#{@rest_protocol}://#{@hostname}:#{@port}/v1/config/query/#{basename}", "put", headers, nil, contents)
+          if (r.code.to_i < 200 && r.code.to_i > 206)
+            @logger.error("code: #{r.code.to_i} body:#{r.body}")
           end
         end
       else
@@ -154,7 +198,7 @@ module Roxy
           @logger.debug "headers: #{headers}"
           @logger.debug "params: #{params}"
 
-          url = "http://#{@hostname}:#{@port}/v1/config/resources/#{extensionName}"
+          url = "#{@rest_protocol}://#{@hostname}:#{@port}/v1/config/resources/#{extensionName}"
           if (params.length > 0)
             url << "?" << params.join("&")
           end
@@ -263,7 +307,7 @@ module Roxy
           @logger.debug "transformName: #{transformName}"
           @logger.debug "headers: #{headers}"
           @logger.debug "params: #{params}"
-          url = "http://#{@hostname}:#{@port}/v1/config/transforms/#{transformName}"
+          url = "#{@rest_protocol}://#{@hostname}:#{@port}/v1/config/transforms/#{transformName}"
           if (params.length > 0)
             url << "?" << params.join("&")
           end
